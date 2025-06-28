@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
+import ImageWithFallback from "@/components/ImageWithFallback";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import AnimatedFeatures from "@/components/AnimatedFeatures";
@@ -38,16 +38,16 @@ export default function Home() {
     
     const slides = [
       {
-        image: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        alt: "Container Terminal"
+        image: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1920&auto=format&fit=crop",
+        alt: "Students learning together"
       },
       {
-        image: "https://images.unsplash.com/photo-1522661067900-ab829854a57f?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        alt: "Logistics Warehouse"
+        image: "https://images.unsplash.com/photo-1522661067900-ab829854a57f?q=80&w=1920&auto=format&fit=crop",
+        alt: "Modern classroom with technology"
       },
       {
-        image: "https://images.unsplash.com/photo-1560785496-3c9d27877182?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        alt: "Cargo Ship at Port"
+        image: "https://images.unsplash.com/photo-1560785496-3c9d27877182?q=80&w=1920&auto=format&fit=crop",
+        alt: "Students using digital devices"
       }
     ];
 
@@ -73,7 +73,7 @@ export default function Home() {
             transition={{ duration: 1, ease: "easeInOut" }}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 z-10" />
-            <Image
+            <ImageWithFallback
               src={slide.image}
               alt={slide.alt}
               fill
@@ -81,6 +81,7 @@ export default function Home() {
               sizes="100vw"
               priority={index === 0}
               className="object-cover"
+              placeholder="blur"
             />
           </motion.div>
         ))}
@@ -95,10 +96,10 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
-                Because Every Student
+                Because Every Mother
               </span>{' '}
               <span className="text-white">
-                Deserves An Education
+                Deserves The Best Care
               </span>
             </motion.h1>
             
@@ -108,7 +109,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              Empower your learning journey with ShikshaMitra's innovative education platform—access quality resources, track your progress in real-time, and connect with expert mentors to shape a brighter future.
+              Empower your maternal journey with MAA's comprehensive healthcare platform—access quality medical resources, track your pregnancy progress in real-time, and connect with expert healthcare providers for the best care.
             </motion.p>
             
             <motion.div
@@ -165,14 +166,14 @@ export default function Home() {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <div className="h-14 w-[200px]">
-                <object
-                  data="/logo.svg"
-                  type="image/svg+xml"
-                  className="h-full w-full"
-                  aria-label="ShikshaMitra Logo"
-                >
-                  ShikshaMitra Logo
-                </object>
+                <ImageWithFallback
+                  src="/maa-logo.svg"
+                  alt="MAA Logo"
+                  width={200}
+                  height={56}
+                  className="h-full w-full object-contain"
+                  priority
+                />
               </div>
             </Link>
 
@@ -208,22 +209,29 @@ export default function Home() {
             <div className="hidden md:flex items-center space-x-4">
               <Link
                 href="/login"
-                className="text-indigo-600 hover:text-indigo-500"
+                className={`px-6 py-2 rounded-full font-medium transition-colors ${
+                  isScrolled 
+                    ? 'text-indigo-600 hover:text-indigo-500' 
+                    : 'text-white hover:text-indigo-200'
+                }`}
               >
                 Login
               </Link>
               <Link
-            href="/signup"
-            className="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-          >
-            Sign Up  
-          </Link>
-
+                href="/signup"
+                className={`inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full shadow-sm text-base font-medium text-white ${
+                  isScrolled ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-white/20 hover:bg-white/30'
+                } transition-colors`}
+              >
+                Sign Up
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
+              className={`md:hidden p-2 rounded-lg transition-colors ${
+                isScrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'
+              }`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -238,12 +246,14 @@ export default function Home() {
           <motion.div
             initial={false}
             animate={isMenuOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
-            className="md:hidden overflow-hidden bg-white/10 backdrop-blur-md rounded-lg mt-2 mb-2"
+            className={`md:hidden overflow-hidden rounded-lg mt-2 mb-2 ${
+              isScrolled ? 'bg-white shadow-lg' : 'bg-white/10 backdrop-blur-md'
+            }`}
           >
             <div className="px-4 py-2 space-y-2">
               {[
                 ['Home', '/'],
-                ['Features', '/Features'],
+                ['Features', '/features'],
                 ['How It Works', '/how-it-works'],
                 ['About', '/about'],
                 ['Need Help?', '/track'],
@@ -255,7 +265,9 @@ export default function Home() {
                   className={`block py-2 px-4 rounded-lg transition-colors ${
                     pathname === href
                       ? 'bg-indigo-600 text-white font-medium' 
-                      : 'text-white hover:bg-white/10'
+                      : isScrolled 
+                        ? 'text-gray-700 hover:bg-gray-100'
+                        : 'text-white hover:bg-white/10'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -265,17 +277,21 @@ export default function Home() {
               <div className="pt-2 space-y-2">
                 <Link
                   href="/login"
-                  className="block w-full py-2 px-4 text-white bg-white/10 hover:bg-white/20 rounded-lg text-center font-medium"
+                  className={`block w-full py-2 px-4 rounded-lg text-center font-medium transition-colors ${
+                    isScrolled
+                      ? 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                      : 'bg-white/10 text-white hover:bg-white/20'
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Login
                 </Link>
                 <Link
-                  href="/track-package"
+                  href="/signup"
                   className="block w-full py-2 px-4 text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg text-center font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Need Help?
+                  Sign Up
                 </Link>
               </div>
             </div>
@@ -287,17 +303,15 @@ export default function Home() {
       <HeroSection />
       <HomeProgressTracker />
       
-
-
-      {/* Why ShikshaMitra Section */}
+      {/* Why MAA Section */}
       <section className="py-20 bg-white" id="features">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              Why Choose ShikshaMitra?
+              Why Choose MAA?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Experience the future of education with our innovative learning solutions. We combine technology with expert guidance to transform your learning journey.
+            Experience the future of maternal healthcare with our innovative platform. We combine technology with expert medical guidance to transform your pregnancy journey.
             </p>
           </div>
 
@@ -307,12 +321,12 @@ export default function Home() {
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <div className="w-14 h-14 bg-indigo-100 rounded-lg mb-6 flex items-center justify-center">
                 <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">AI-Driven Performance Monitoring</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">AI-Driven Health Monitoring</h3>
               <p className="text-gray-600">
-              Track and enhance student progress with intelligent AI insights for personalized learning growth.
+              Track and enhance maternal health with intelligent AI insights for personalized pregnancy care.
               </p>
             </div>
 
@@ -323,9 +337,9 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Parent Monitoring</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Family Health Monitoring</h3>
               <p className="text-gray-600">
-              Complete Child Safety with Real-Time Monitoring and Activity Alerts.
+              Complete family safety with real-time health monitoring and medical alerts.
               </p>
             </div>
 
@@ -336,9 +350,9 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Accessible & Free Education</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Accessible & Affordable Healthcare</h3>
               <p className="text-gray-600">
-                Quality learning at no cost, supported by government initiatives for every child's future.
+                Quality maternal care at affordable prices, supported by government healthcare initiatives.
               </p>
             </div>
 
@@ -349,9 +363,9 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Nationwide Learning Network</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Nationwide Healthcare Network</h3>
               <p className="text-gray-600">
-                Nationwide Learning NetworkEmpowering students across India with quality education and seamless learning resources.
+                Empowering mothers across India with quality healthcare and seamless medical resources.
               </p>
             </div>
 
@@ -362,9 +376,9 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">24/7 Support</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">24/7 Medical Support</h3>
               <p className="text-gray-600">
-                Round-the-clock Student support to assist you with any queries or concerns.
+                Round-the-clock medical support to assist you with any health queries or concerns.
               </p>
             </div>
 
@@ -375,57 +389,54 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Support Tailored to Your Region</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Personalized Care Plans</h3>
               <p className="text-gray-600">
-              Providing full tutoring and nutritional support, tailored to your region, to ensure the holistic development of every child .
+              Providing personalized maternal care plans tailored to your specific needs and health conditions.
               </p>
             </div>
           </div>
 
-          {/* Key Features Grid */}
-<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-  {/* Feature 7 */}
-  <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-    <div className="w-14 h-14 bg-green-100 rounded-lg mb-6 flex items-center justify-center">
-      <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-      </svg>
-    </div>
-    <h3 className="text-xl font-semibold mb-4 text-gray-900">Parental Oversight for Early Learners</h3>
-    <p className="text-gray-600">
-      For children under 8, only parents can access and monitor learning activities, track progress, and tailor educational content to their needs.
-    </p>
-  </div>
+          {/* Additional Features Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {/* Feature 7 */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-green-100 rounded-lg mb-6 flex items-center justify-center">
+                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Prenatal Care Monitoring</h3>
+              <p className="text-gray-600">
+                Comprehensive prenatal monitoring with regular checkups, health tracking, and expert guidance throughout your pregnancy.
+              </p>
+            </div>
 
-  {/* Feature 8 */}
-  <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-    <div className="w-14 h-14 bg-blue-100 rounded-lg mb-6 flex items-center justify-center">
-      <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M4 6h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z" />
-      </svg>
-    </div>
-    <h3 className="text-xl font-semibold mb-4 text-gray-900">Self-Paced Learning with Video Solutions</h3>
-    <p className="text-gray-600">
-      Students above 8 can learn independently and access video tutorials and book solutions to resolve their doubts.
-    </p>
-  </div>
+            {/* Feature 8 */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-blue-100 rounded-lg mb-6 flex items-center justify-center">
+                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M4 6h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Virtual Consultations</h3>
+              <p className="text-gray-600">
+                Access expert medical consultations from the comfort of your home with our telemedicine platform.
+              </p>
+            </div>
 
-  {/* Feature 9 */}
-  <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-    <div className="w-14 h-14 bg-red-100 rounded-lg mb-6 flex items-center justify-center">
-      <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm-6 2h12a2 2 0 012 2v5H4v-5a2 2 0 012-2z" />
-      </svg>
-    </div>
-    <h3 className="text-xl font-semibold mb-4 text-gray-900">Student Eligibility Verification</h3>
-    <p className="text-gray-600">
-      We verify eligibility using Aadhaar or Birth Certificates, ensuring students receive the right educational resources.
-    </p>
-  </div>
-</div>
-
-
-          
+            {/* Feature 9 */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-14 h-14 bg-red-100 rounded-lg mb-6 flex items-center justify-center">
+                <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zm-6 2h12a2 2 0 012 2v5H4v-5a2 2 0 012-2z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Secure Health Records</h3>
+              <p className="text-gray-600">
+                We maintain secure digital health records with verified medical history for comprehensive care.
+              </p>
+            </div>
+          </div>
               
           {/* Call to Action */}
           <div className="mt-16 text-center">
@@ -433,7 +444,7 @@ export default function Home() {
               href="/signup"
               className="inline-block bg-gradient-to-r from-indigo-600 to-violet-600 text-white px-8 py-3 rounded-lg font-medium hover:from-indigo-700 hover:to-violet-700 transition-all transform hover:scale-105"
             >
-              Join ShikshaMitra Today
+              Join MAA Today
             </Link>
           </div>
         </div>
@@ -444,10 +455,10 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-            Voices from Our Learning Community
+            Voices from Our Healthcare Community
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Don't just take our word for it. Here's what our valued Learners have to say about ShikshaMitra.
+              Don't just take our word for it. Here's what our valued patients have to say about MAA.
             </p>
           </div>
 
@@ -461,12 +472,12 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900">Rajesh Kumar</h4>
-                  <p className="text-gray-600">Father of 9-Year-Old Twins</p>
+                  <h4 className="text-lg font-semibold text-gray-900">Priya Sharma</h4>
+                  <p className="text-gray-600">New Mother</p>
                 </div>
               </div>
               <p className="text-gray-600 italic">
-                ShikshaMitra has greatly enhanced my children's learning with personalized support and real-time progress tracking.
+                MAA has greatly enhanced my pregnancy journey with personalized care and real-time health monitoring.
               </p>
             </div>
 
@@ -479,12 +490,12 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900">Priya Sharma</h4>
-                  <p className="text-gray-600">Student Of 10th Grade</p>
+                  <h4 className="text-lg font-semibold text-gray-900">Anita Patel</h4>
+                  <p className="text-gray-600">Expecting Mother</p>
                 </div>
               </div>
               <p className="text-gray-600 italic">
-                The support from ShikshaMitra has been amazing. They've been there for me every step of the way, making my board exam journey smoother and more manageable.
+                The support from MAA has been amazing. They've been there for me every step of the way, making my pregnancy journey smoother and more manageable.
               </p>
             </div>
 
@@ -497,28 +508,26 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900">Amit Patel</h4>
-                  <p className="text-gray-600">Fathe Of 6-Year-old Boy</p>
+                  <h4 className="text-lg font-semibold text-gray-900">Sunita Gupta</h4>
+                  <p className="text-gray-600">Mother of Two</p>
                 </div>
               </div>
               <p className="text-gray-600 italic">
-              As a father, I'm thankful for ShikshaMitra's nutritional support for my son. It has made a significant difference in his overall health and development.
+              As a mother, I'm thankful for MAA's comprehensive healthcare support. It has made a significant difference in my family's overall health and well-being.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      
-
       {/* Call to Action Section */}
       <section className="py-20 bg-gradient-to-r from-indigo-600 to-violet-600 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-8">
-            Ready to Transform Your  Experience?
+            Ready to Transform Your Healthcare Experience?
           </h2>
           <p className="text-xl mb-12 max-w-2xl mx-auto">
-            Join thousands of satisfied Student who trust ShikshaMitra for their Education needs.
+            Join thousands of satisfied mothers who trust MAA for their healthcare needs.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -536,8 +545,6 @@ export default function Home() {
           </div>
         </div>
       </section>    
-
-      
 
       {/* Feedback Form Section */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
@@ -602,7 +609,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl text-gray-600"
             >
-              Help us improve your experience
+              Help us improve your healthcare experience
             </motion.p>
           </div>
           <motion.div
@@ -710,10 +717,10 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="text-4xl font-bold text-white mb-4"
             >
-              Stay Updated with ShikshaMitra
+              Stay Updated with MAA
               <br />
               <span className="text-2xl font-normal mt-2 block text-indigo-100">
-                Get the latest Education updates and exclusive features
+                Get the latest healthcare updates and exclusive features
               </span>
             </motion.h2>
           </div>
@@ -764,10 +771,6 @@ export default function Home() {
         </div>
       </section>
 
-      
-
-      
-
       {/* Footer Section */}
       <footer className="bg-navy-900 text-white">
         <div className="container mx-auto px-4">
@@ -775,15 +778,15 @@ export default function Home() {
           <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Company Info */}
             <div className="space-y-6">
-              <Image
-                src="/logo.svg"
-                alt="ShikshaMitra"
+              <ImageWithFallback
+                src="/maa-logo.svg"
+                alt="MAA"
                 width={180}
                 height={50}
                 className="brightness-0 invert"
               />
               <p className="text-gray-400">
-                Introduce India ShikshaMitra, an Indian Education aggregator dedicated to supporting Students in optimizing their Learning.
+                Introducing MAA, an Indian maternal healthcare platform dedicated to supporting mothers in optimizing their health journey.
               </p>
               <div className="flex space-x-4">
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -808,7 +811,7 @@ export default function Home() {
             <div>
               <h3 className="text-lg font-semibold mb-6">Company</h3>
               <ul className="space-y-4">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Our Pricing</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Our Services</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
@@ -822,7 +825,7 @@ export default function Home() {
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms & Conditions</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Community</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Refund Policy</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Health Guidelines</a></li>
               </ul>
             </div>
 
@@ -841,7 +844,7 @@ export default function Home() {
                   <svg className="w-6 h-6 text-emerald-400 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
-                  <span className="text-gray-400">info@ShikshaMitra.com</span>
+                  <span className="text-gray-400">info@maa.com</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <svg className="w-6 h-6 text-emerald-400 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -855,7 +858,7 @@ export default function Home() {
 
           {/* Footer Bottom */}
           <div className="py-8 border-t border-gray-800 text-center text-gray-400">
-            <p>Copyright 2025 ShikshaMitra. All rights reserved.</p>
+            <p>Copyright 2025 MAA. All rights reserved.</p>
           </div>
         </div>
       </footer>

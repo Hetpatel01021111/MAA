@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ShikshaMitra",
-  description: "Your trusted logistics partner",
+  title: "MAA - Maternal & Child Care",
+  description: "Your trusted maternal healthcare partner",
 };
 
 export default function RootLayout({
