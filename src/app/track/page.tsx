@@ -113,12 +113,12 @@ export default function NeedHelpPage() {
     },
     {
       icon: SparklesIcon,
-      title: "Features Guide",
-      description: "Explore all the powerful features available to you",
+      title: "Healthcare Features",
+      description: "Explore all the powerful healthcare features available to you",
       questions: [
-        "How does the analytics dashboard work?",
-        "Can I customize my learning path?",
-        "What integrations are available?"
+        "How does the health monitoring work?",
+        "Can I customize my care plan?",
+        "What medical integrations are available?"
       ]
     },
     {
@@ -127,7 +127,7 @@ export default function NeedHelpPage() {
       description: "Solutions to common problems and issues",
       questions: [
         "Why can't I log in?",
-        "The video isn't loading, what should I do?",
+        "The app isn't loading, what should I do?",
         "How do I report a bug?"
       ]
     },
@@ -155,7 +155,7 @@ export default function NeedHelpPage() {
   return (
     <>
       <main className="min-h-screen">
-        {/* Navigation Bar - Using the same navigation from the first code */}
+        {/* Navigation */}
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? 'bg-white/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
         }`}>
@@ -163,15 +163,10 @@ export default function NeedHelpPage() {
             <div className="flex items-center justify-between h-20">
               {/* Logo */}
               <Link href="/" className="flex items-center">
-                <div className="h-14 w-[200px]">
-                  <object
-                    data="/logo.svg"
-                    type="image/svg+xml"
-                    className="h-full w-full"
-                    aria-label="ShikshaMitra Logo"
-                  >
-                    ShikshaMitra Logo
-                  </object>
+                <div className="h-14 w-[200px] flex items-center">
+                  <div className="text-2xl font-bold text-indigo-600">
+                    MAA
+                  </div>
                 </div>
               </Link>
 
@@ -353,29 +348,29 @@ export default function NeedHelpPage() {
           </div>
         </nav>
 
-        {/* Rest of your existing NeedHelpPage content */}
-                <section 
-                  ref={ref}
-                  className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br"
-                >
-                  {isLoading ? (
-                    <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
-                  ) : (
-                    <motion.div 
-                      className="absolute inset-0 z-0"
-                      style={{ y: yBg }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 0.2 }}
-                      transition={{ duration: 1 }}
-                    >
-                      <Image
-                        src="https://images.pexels.com/photos/5905841/pexels-photo-5905841.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                        alt="Contact us - people communicating"
-                        fill
-                        className="object-cover"
-                      />
-                    </motion.div>
-                  )}
+        {/* Hero Section */}
+        <section 
+          ref={ref}
+          className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br"
+        >
+          {isLoading ? (
+            <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
+          ) : (
+            <motion.div 
+              className="absolute inset-0 z-0"
+              style={{ y: yBg }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.2 }}
+              transition={{ duration: 1 }}
+            >
+              <Image
+                src="https://images.pexels.com/photos/5905841/pexels-photo-5905841.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt="Healthcare support - people communicating"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+          )}
           
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-black/10" />
           
@@ -582,7 +577,7 @@ export default function NeedHelpPage() {
                     <div className="flex-grow overflow-y-auto mb-4 space-y-4">
                       {chatHistory.length === 0 ? (
                         <div className="h-full flex items-center justify-center text-gray-500">
-                          <p>Ask me anything about ShikshaMitra...</p>
+                          <p>Ask me anything about MAA...</p>
                         </div>
                       ) : (
                         chatHistory.map((message, index) => (
@@ -693,7 +688,7 @@ export default function NeedHelpPage() {
                   Frequently <span className="text-indigo-600">Asked Questions</span>
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Quick answers to common questions about ShikshaMitra
+                  Quick answers to common questions about MAA
                 </p>
               </motion.div>
             )}
@@ -715,8 +710,8 @@ export default function NeedHelpPage() {
                     answer: "You can reset your password by clicking on the 'Forgot Password' link on the login page. You'll receive an email with instructions to create a new password."
                   },
                   {
-                    question: "What payment methods do you accept?",
-                    answer: "We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for payments."
+                    question: "What healthcare services do you provide?",
+                    answer: "We provide comprehensive maternal healthcare services including prenatal monitoring, virtual consultations, health tracking, and personalized care plans."
                   },
                   {
                     question: "How do I cancel my subscription?",

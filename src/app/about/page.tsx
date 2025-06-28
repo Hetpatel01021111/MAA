@@ -50,25 +50,25 @@ export default function AboutPage() {
     {
       year: "2025",
       title: "Founded with Vision",
-      description: "ShikshaMitra was conceptualized to address India's education crisis through technology",
+      description: "MAA was conceptualized to address India's maternal healthcare crisis through technology",
       icon: AcademicCapIcon
     },
     {
       year: "2025",
       title: "First Pilot Program",
-      description: "Launched in 50 schools across Gujarat with government partnership",
+      description: "Launched in 50 hospitals across Gujarat with government partnership",
       icon: ChartBarIcon
     },
     {
       year: "2026",
       title: "National Expansion",
-      description: "Scaled to 5 states with 500,000+ students onboarded",
+      description: "Scaled to 5 states with 500,000+ mothers onboarded",
       icon: GlobeAltIcon
     },
     {
       year: "2026",
       title: "AI Integration",
-      description: "Implemented personalized learning algorithms across platform",
+      description: "Implemented personalized healthcare algorithms across platform",
       icon: ShieldCheckIcon
     }
   ];
@@ -76,21 +76,21 @@ export default function AboutPage() {
   const teamMembers = [
     {
       name: "Dr. Priya Sharma",
-      role: "Education Director",
-      bio: "Former NCERT curriculum designer with 15 years experience in pedagogical innovation",
-      image: "/team-priya.jpg"
+      role: "Medical Director",
+      bio: "Former AIIMS gynecologist with 15 years experience in maternal healthcare innovation",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=face"
     },
     {
       name: "Rajesh Patel",
       role: "Technology Lead",
-      bio: "AI/ML specialist from IIT Bombay focused on adaptive learning systems",
-      image: "/team-rajesh.jpg"
+      bio: "AI/ML specialist from IIT Bombay focused on healthcare technology systems",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
     },
     {
       name: "Ananya Gupta",
       role: "Government Relations",
-      bio: "Policy expert bridging technology solutions with NEP 2023 implementation",
-      image: "/team-ananya.jpg"
+      bio: "Policy expert bridging technology solutions with healthcare implementation",
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face"
     }
   ];
 
@@ -114,12 +114,9 @@ export default function AboutPage() {
                 repeatType: "reverse"
               }}
             >
-              <Image
-                src="/maa-logo.svg"
-                alt="ShikshaMitra Logo"
-                width={200}
-                height={60}
-              />
+              <div className="text-4xl font-bold text-indigo-600">
+                MAA
+              </div>
             </motion.div>
             <motion.div
               className="mt-8 h-1 w-48 bg-gray-200 rounded-full overflow-hidden"
@@ -148,17 +145,13 @@ export default function AboutPage() {
               {/* Logo */}
               <Link href="/" className="flex items-center">
                 <motion.div 
-                  className="h-14 w-[200px]"
+                  className="h-14 w-[200px] flex items-center"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
-                  <Image
-                    src="/maa-logo.svg"
-                    alt="ShikshaMitra Logo"
-                    width={200}
-                    height={56}
-                    className="h-full w-full object-contain"
-                  />
+                  <div className="text-2xl font-bold text-indigo-600">
+                    MAA
+                  </div>
                 </motion.div>
               </Link>
 
@@ -334,7 +327,7 @@ export default function AboutPage() {
           >
             <Image
               src="https://images.pexels.com/photos/9783353/pexels-photo-9783353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              alt="Students learning with technology"
+              alt="Healthcare professionals with technology"
               fill
               className="object-cover"
             />
@@ -357,7 +350,7 @@ export default function AboutPage() {
                 animate={{ opacity: isLoading ? 0 : 1 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
-                Transforming Education <span className="text-yellow-300">Through Innovation</span>
+                Transforming Healthcare <span className="text-yellow-300">Through Innovation</span>
               </motion.h1>
               <motion.p
                 className="text-xl md:text-2xl text-indigo-100 max-w-3xl mx-auto leading-relaxed"
@@ -365,7 +358,7 @@ export default function AboutPage() {
                 animate={{ opacity: isLoading ? 0 : 1 }}
                 transition={{ delay: 0.7, duration: 0.8 }}
               >
-                ShikshaMitra is revolutionizing learning in India with AI-powered personalized education
+                MAA is revolutionizing maternal healthcare in India with AI-powered personalized care
               </motion.p>
             </motion.div>
           </div>
@@ -385,7 +378,7 @@ export default function AboutPage() {
                 Our <span className="text-indigo-600">Story</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                How we're addressing India's education challenges through technology
+                How we're addressing India's maternal healthcare challenges through technology
               </p>
             </motion.div>
 
@@ -398,23 +391,21 @@ export default function AboutPage() {
                 viewport={{ once: true }}
               >
                 <p>
-                  Founded in 2023, ShikshaMitra emerged as a response to India's growing education crisis. 
-                  With <strong>55% of 10-year-olds unable to read simple texts</strong> (ASER 2023) and 
-                  <strong> 25% of rural schools lacking electricity</strong> (NITI Aayog 2022), we recognized 
-                  the urgent need for scalable, technology-driven solutions.
+                  Founded in 2025, MAA emerged as a response to India's growing maternal healthcare crisis. 
+                  With <strong>high maternal mortality rates</strong> and <strong>limited access to quality healthcare</strong> 
+                  in rural areas, we recognized the urgent need for scalable, technology-driven solutions.
                 </p>
                 
                 <p>
-                  Our initiative aligns with the National Education Policy 2023's vision for digital learning, 
-                  but goes further by addressing the <strong>implementation gaps</strong> in existing platforms 
-                  like DIKSHA. We combine AI-powered personalization with gamification to create engaging, 
-                  effective learning experiences for India's 260 million students.
+                  Our initiative focuses on providing comprehensive maternal care through AI-powered monitoring, 
+                  telemedicine consultations, and personalized health plans. We combine cutting-edge technology 
+                  with traditional healthcare wisdom to create accessible solutions for India's mothers.
                 </p>
                 
                 <p>
-                  Starting with a pilot program in Gujarat, we've grown to serve <strong>500,000+ students</strong> 
-                  across multiple states. Our goal is to achieve a <strong>30% improvement in foundational literacy</strong> 
-                  by 2026, potentially adding $90 billion annually to India's GDP by 2030 through better education outcomes.
+                  Starting with a pilot program in Gujarat, we've grown to serve <strong>500,000+ mothers</strong> 
+                  across multiple states. Our goal is to reduce maternal mortality by <strong>30%</strong> 
+                  by 2026 and ensure every mother has access to quality healthcare regardless of location.
                 </p>
               </motion.div>
             </div>
@@ -435,7 +426,7 @@ export default function AboutPage() {
                   Our <span className="text-indigo-600">Mission</span>
                 </h2>
                 <p className="text-xl text-gray-600 mb-6">
-                  To democratize quality education through innovative technology that adapts to each learner's needs
+                  To democratize quality maternal healthcare through innovative technology that adapts to each mother's needs
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start">
@@ -447,7 +438,7 @@ export default function AboutPage() {
                       </div>
                     </div>
                     <p className="ml-3 text-gray-600">
-                      Bridge the learning gap for India's 260 million students
+                      Bridge the healthcare gap for India's 260 million women
                     </p>
                   </li>
                   <li className="flex items-start">
@@ -459,7 +450,7 @@ export default function AboutPage() {
                       </div>
                     </div>
                     <p className="ml-3 text-gray-600">
-                      Leverage AI to provide personalized learning pathways
+                      Leverage AI to provide personalized healthcare pathways
                     </p>
                   </li>
                   <li className="flex items-start">
@@ -487,7 +478,7 @@ export default function AboutPage() {
                 <div className="aspect-w-16 aspect-h-9 relative rounded-lg overflow-hidden">
                   <Image
                     src="https://images.pexels.com/photos/7666429/pexels-photo-7666429.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                    alt="Students using ShikshaMitra platform"
+                    alt="Healthcare technology in action"
                     width={800}
                     height={450}
                     className="object-cover"
@@ -521,7 +512,7 @@ export default function AboutPage() {
                 Our <span className="text-indigo-600">Journey</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Key milestones in our mission to transform education in India
+                Key milestones in our mission to transform maternal healthcare in India
               </p>
             </motion.div>
 
@@ -586,7 +577,7 @@ export default function AboutPage() {
                 Meet Our <span className="text-indigo-600">Team</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Passionate educators, technologists, and policy experts working together
+                Passionate healthcare professionals, technologists, and policy experts working together
               </p>
             </motion.div>
 
@@ -657,15 +648,15 @@ export default function AboutPage() {
                 Our <span className="text-yellow-300">Impact</span>
               </h2>
               <p className="text-xl opacity-90 max-w-3xl mx-auto">
-                Measuring success through tangible improvements in learning outcomes
+                Measuring success through tangible improvements in maternal healthcare outcomes
               </p>
             </motion.div>
 
             <div className="grid md:grid-cols-4 gap-8 text-center">
               {[
-                { value: "50K+", label: "Students Empowered", icon: UserGroupIcon },
-                { value: "50", label: "Pilot Schools", icon: AcademicCapIcon },
-                { value: "30%", label: "Literacy Improvement", icon: ChartBarIcon },
+                { value: "500K+", label: "Mothers Served", icon: UserGroupIcon },
+                { value: "50", label: "Partner Hospitals", icon: AcademicCapIcon },
+                { value: "30%", label: "Mortality Reduction", icon: ChartBarIcon },
                 { value: "10+", label: "States Covered", icon: GlobeAltIcon }
               ].map((stat, index) => (
                 <motion.div
@@ -703,10 +694,10 @@ export default function AboutPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl font-bold mb-8">
-                Ready to <span className="text-yellow-300">Transform</span> Education With Us?
+                Ready to <span className="text-yellow-300">Transform</span> Healthcare With Us?
               </h2>
               <p className="text-xl mb-12 max-w-2xl mx-auto">
-                Whether you're an educator, policymaker, or technology partner, join our mission
+                Whether you're a healthcare provider, policymaker, or technology partner, join our mission
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <motion.div

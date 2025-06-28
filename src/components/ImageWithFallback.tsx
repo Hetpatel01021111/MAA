@@ -42,7 +42,7 @@ export default function ImageWithFallback({
   const generateFallback = () => {
     const w = width || 800;
     const h = height || 600;
-    return fallbackSrc || `https://via.placeholder.com/${w}x${h}/e5e7eb/6b7280?text=Image+Loading...`;
+    return fallbackSrc || `https://via.placeholder.com/${w}x${h}/4f46e5/ffffff?text=MAA`;
   };
 
   // Reset state when src changes

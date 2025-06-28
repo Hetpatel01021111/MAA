@@ -165,15 +165,10 @@ export default function Home() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <div className="h-14 w-[200px]">
-                <ImageWithFallback
-                  src="/maa-logo.svg"
-                  alt="MAA Logo"
-                  width={200}
-                  height={56}
-                  className="h-full w-full object-contain"
-                  priority
-                />
+              <div className="h-14 w-[200px] flex items-center">
+                <div className="text-2xl font-bold text-indigo-600">
+                  MAA
+                </div>
               </div>
             </Link>
 
@@ -778,13 +773,9 @@ export default function Home() {
           <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Company Info */}
             <div className="space-y-6">
-              <ImageWithFallback
-                src="/maa-logo.svg"
-                alt="MAA"
-                width={180}
-                height={50}
-                className="brightness-0 invert"
-              />
+              <div className="text-2xl font-bold text-white">
+                MAA
+              </div>
               <p className="text-gray-400">
                 Introducing MAA, an Indian maternal healthcare platform dedicated to supporting mothers in optimizing their health journey.
               </p>
