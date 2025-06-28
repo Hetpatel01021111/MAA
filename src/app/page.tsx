@@ -7,11 +7,15 @@ import { useInView } from "react-intersection-observer";
 import HomeProgressTracker from "@/components/HomeProgressTracker";
 
 import {
-  TruckIcon,
-  GlobeAsiaAustraliaIcon,
-  CalculatorIcon,
+  HeartIcon,
+  ShieldCheckIcon,
+  ClockIcon,
+  UserGroupIcon,
   Bars3Icon,
-  XMarkIcon
+  XMarkIcon,
+  DevicePhoneMobileIcon,
+  ChartBarIcon,
+  AcademicCapIcon
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
@@ -121,7 +125,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.6 }}
             >
               <Link 
-                href="#calculate"
+                href="/dashboard"
                 className="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white px-8 py-3 rounded-lg font-medium transition-all transform hover:scale-105"
               >
                 Get Started
@@ -306,7 +310,7 @@ export default function Home() {
               Why Choose MAA?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Experience the future of maternal healthcare with our innovative platform. We combine technology with expert medical guidance to transform your pregnancy journey.
+              Experience the future of maternal healthcare with our innovative platform. We combine technology with expert medical guidance to transform your pregnancy journey.
             </p>
           </div>
 
@@ -315,35 +319,29 @@ export default function Home() {
             {/* Feature 1 */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <div className="w-14 h-14 bg-indigo-100 rounded-lg mb-6 flex items-center justify-center">
-                <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
+                <ChartBarIcon className="w-8 h-8 text-indigo-600" />
               </div>
               <h3 className="text-xl font-semibold mb-4 text-gray-900">AI-Driven Health Monitoring</h3>
               <p className="text-gray-600">
-              Track and enhance maternal health with intelligent AI insights for personalized pregnancy care.
+                Track and enhance maternal health with intelligent AI insights for personalized pregnancy care.
               </p>
             </div>
 
             {/* Feature 2 */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <div className="w-14 h-14 bg-violet-100 rounded-lg mb-6 flex items-center justify-center">
-                <svg className="w-8 h-8 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
+                <ShieldCheckIcon className="w-8 h-8 text-violet-600" />
               </div>
               <h3 className="text-xl font-semibold mb-4 text-gray-900">Family Health Monitoring</h3>
               <p className="text-gray-600">
-              Complete family safety with real-time health monitoring and medical alerts.
+                Complete family safety with real-time health monitoring and medical alerts.
               </p>
             </div>
 
             {/* Feature 3 */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <div className="w-14 h-14 bg-indigo-100 rounded-lg mb-6 flex items-center justify-center">
-                <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <HeartIcon className="w-8 h-8 text-indigo-600" />
               </div>
               <h3 className="text-xl font-semibold mb-4 text-gray-900">Accessible & Affordable Healthcare</h3>
               <p className="text-gray-600">
@@ -367,9 +365,7 @@ export default function Home() {
             {/* Feature 5 */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <div className="w-14 h-14 bg-indigo-100 rounded-lg mb-6 flex items-center justify-center">
-                <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <ClockIcon className="w-8 h-8 text-indigo-600" />
               </div>
               <h3 className="text-xl font-semibold mb-4 text-gray-900">24/7 Medical Support</h3>
               <p className="text-gray-600">
@@ -386,7 +382,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-4 text-gray-900">Personalized Care Plans</h3>
               <p className="text-gray-600">
-              Providing personalized maternal care plans tailored to your specific needs and health conditions.
+                Providing personalized maternal care plans tailored to your specific needs and health conditions.
               </p>
             </div>
           </div>
@@ -396,22 +392,18 @@ export default function Home() {
             {/* Feature 7 */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <div className="w-14 h-14 bg-green-100 rounded-lg mb-6 flex items-center justify-center">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                </svg>
+                <AcademicCapIcon className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">Prenatal Care Monitoring</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-900">Early Child Health Diagnosis</h3>
               <p className="text-gray-600">
-                Comprehensive prenatal monitoring with regular checkups, health tracking, and expert guidance throughout your pregnancy.
+                Advanced AI-powered early detection system for childhood conditions like diabetes, asthma, and developmental disorders with personalized management plans.
               </p>
             </div>
 
             {/* Feature 8 */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
               <div className="w-14 h-14 bg-blue-100 rounded-lg mb-6 flex items-center justify-center">
-                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M4 6h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z" />
-                </svg>
+                <DevicePhoneMobileIcon className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-semibold mb-4 text-gray-900">Virtual Consultations</h3>
               <p className="text-gray-600">
@@ -445,12 +437,87 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Early Diagnosis Section */}
+      <section className="py-20 bg-gradient-to-br from-indigo-50 to-violet-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">
+              Early Child Health <span className="text-indigo-600">Diagnosis</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our AI-powered platform helps detect and manage childhood health conditions early, ensuring better outcomes for your child's future.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-indigo-500">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">Type 1 Diabetes Management</h3>
+                <p className="text-gray-600 mb-4">
+                  Like Mateo's parents, many families struggle with managing childhood diabetes. Our platform provides:
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 mr-3"></span>
+                    <span className="text-gray-600">Simplified medical guidance in easy-to-understand language</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 mr-3"></span>
+                    <span className="text-gray-600">Interactive simulations for emergency handling</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 mr-3"></span>
+                    <span className="text-gray-600">Real-time support and personalized coaching</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 mr-3"></span>
+                    <span className="text-gray-600">Multi-language support for diverse families</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-violet-500">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">Comprehensive Health Screening</h3>
+                <p className="text-gray-600">
+                  Early detection of common childhood conditions including asthma, food allergies, developmental delays, and growth disorders through our advanced screening protocols.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-xl">
+              <div className="bg-gradient-to-br from-purple-600 to-indigo-600 text-white p-6 rounded-xl mb-6">
+                <h3 className="text-xl font-bold mb-2">Clinical Vignette</h3>
+                <p className="text-sm opacity-90">Real-world scenario</p>
+              </div>
+              
+              <div className="space-y-4 text-gray-600">
+                <p>
+                  <strong>Mateo's parents</strong> recently learned that their 7-year-old son has type 1 diabetes, but they struggle to fully understand how to manage his condition. They find medical jargon confusing, feel unprepared to handle emergencies, and worry about teaching Mateo lifelong self-care habits.
+                </p>
+                
+                <p>
+                  While doctors provide guidance, the information can be difficult to retain, and pamphlets feel insufficient.
+                </p>
+                
+                <p>
+                  <strong>They wonder if an AI-powered tool</strong>—such as personalized coaching, interactive simulations, or intuitive visual guides—could simplify complex medical concepts, offer real-time support, and empower them to make informed decisions.
+                </p>
+                
+                <p>
+                  The ideal solution will enhance caregiver confidence, improve health education for common pediatric conditions—such as type 1 diabetes, asthma, food allergies, or epilepsy—and be accessible in multiple languages to support diverse families.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-            Voices from Our Healthcare Community
+              Voices from Our Healthcare Community
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Don't just take our word for it. Here's what our valued patients have to say about MAA.
@@ -508,7 +575,7 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-gray-600 italic">
-              As a mother, I'm thankful for MAA's comprehensive healthcare support. It has made a significant difference in my family's overall health and well-being.
+                As a mother, I'm thankful for MAA's comprehensive healthcare support. It has made a significant difference in my family's overall health and well-being.
               </p>
             </div>
           </div>
@@ -526,7 +593,7 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/login"
+              href="/dashboard"
               className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-medium hover:bg-indigo-50 transition-colors"
             >
               Get Started Now

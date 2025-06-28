@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useFormState, useFormStatus } from 'react-dom';
 import {
-  AcademicCapIcon,
-  BookOpenIcon,
+  HeartIcon,
   ChartBarIcon,
   ClockIcon,
   UserGroupIcon,
@@ -13,7 +12,9 @@ import {
   BellIcon,
   CogIcon,
   ArrowTrendingUpIcon,
-  ExclamationCircleIcon
+  ExclamationCircleIcon,
+  DevicePhoneMobileIcon,
+  ShieldCheckIcon
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import ProgressTracker from '@/components/ProgressTracker';
@@ -32,7 +33,6 @@ interface ProgressBarProps {
 }
 
 export default function Dashboard() {
-  const [errorMessage, dispatch] = useFormState(signIn, undefined);
   const [activeTab, setActiveTab] = useState('overview');
   const [showNotifications, setShowNotifications] = useState(false);
 
@@ -75,7 +75,7 @@ export default function Dashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-indigo-600">ShikshaMitra Dashboard</h1>
+              <h1 className="text-2xl font-bold text-indigo-600">MAA Healthcare Dashboard</h1>
             </div>
             <div className="flex items-center space-x-4">
               <button
@@ -88,97 +88,180 @@ export default function Dashboard() {
               <Link href="/settings">
                 <CogIcon className="h-6 w-6 text-gray-600" />
               </Link>
-              <form action={dispatch}>
-                <LoginButton />
-              </form>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Login Form (shown when not authenticated) */}
-      <div className="max-w-md mx-auto mt-16 bg-white p-8 rounded-xl shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-6 text-indigo-600">Login to Dashboard</h2>
-        
-        {errorMessage && (
-          <div className="mb-4 p-3 bg-red-50 text-red-700 rounded-lg flex items-center">
-            <ExclamationCircleIcon className="h-5 w-5 mr-2" />
-            <span>{errorMessage}</span>
-          </div>
-        )}
+      {/* Main Dashboard Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Welcome Section */}
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">Welcome back, Priya!</h2>
+          <p className="text-gray-600">Here's your health overview for today</p>
+        </div>
 
-        <form action={dispatch} className="space-y-6">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
-            />
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <StatCard
+            icon={HeartIcon}
+            title="Health Score"
+            value="92%"
+            trend={5}
+            color="border-red-500"
+          />
+          <StatCard
+            icon={CalendarIcon}
+            title="Next Appointment"
+            value="2 Days"
+            color="border-blue-500"
+          />
+          <StatCard
+            icon={ChartBarIcon}
+            title="Weekly Progress"
+            value="85%"
+            trend={12}
+            color="border-green-500"
+          />
+          <StatCard
+            icon={ClockIcon}
+            title="Medication Adherence"
+            value="98%"
+            trend={3}
+            color="border-purple-500"
+          />
+        </div>
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column - Progress Tracker */}
+          <div className="lg:col-span-2">
+            <ProgressTracker />
           </div>
 
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-              Password
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
-            />
-          </div>
-
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                id="rememberMe"
-                name="rememberMe"
-                type="checkbox"
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-              />
-              <label htmlFor="rememberMe" className="ml-2 block text-sm text-gray-700">
-                Remember me
-              </label>
+          {/* Right Column - Quick Actions & Alerts */}
+          <div className="space-y-6">
+            {/* Quick Actions */}
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
+              <div className="space-y-3">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  className="w-full flex items-center p-3 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors"
+                >
+                  <DevicePhoneMobileIcon className="h-5 w-5 text-indigo-600 mr-3" />
+                  <span className="text-indigo-700">Schedule Consultation</span>
+                </motion.button>
+                
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  className="w-full flex items-center p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-colors"
+                >
+                  <ChartBarIcon className="h-5 w-5 text-green-600 mr-3" />
+                  <span className="text-green-700">Log Health Data</span>
+                </motion.button>
+                
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  className="w-full flex items-center p-3 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors"
+                >
+                  <HeartIcon className="h-5 w-5 text-purple-600 mr-3" />
+                  <span className="text-purple-700">View Care Plan</span>
+                </motion.button>
+              </div>
             </div>
-            <Link href="/forgot-password" className="text-sm text-indigo-600 hover:text-indigo-500">
-              Forgot password?
-            </Link>
-          </div>
 
-          <div>
-            <LoginButton />
-          </div>
-        </form>
-
-        <div className="mt-6">
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
+            {/* Health Alerts */}
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-lg font-semibold mb-4">Health Alerts</h3>
+              <div className="space-y-3">
+                <div className="flex items-start p-3 bg-yellow-50 rounded-lg">
+                  <ExclamationCircleIcon className="h-5 w-5 text-yellow-600 mr-3 mt-0.5" />
+                  <div>
+                    <p className="text-sm font-medium text-yellow-800">Medication Reminder</p>
+                    <p className="text-xs text-yellow-600">Take your prenatal vitamins</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start p-3 bg-blue-50 rounded-lg">
+                  <CalendarIcon className="h-5 w-5 text-blue-600 mr-3 mt-0.5" />
+                  <div>
+                    <p className="text-sm font-medium text-blue-800">Upcoming Checkup</p>
+                    <p className="text-xs text-blue-600">Dr. Sharma - Jan 25, 2025</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start p-3 bg-green-50 rounded-lg">
+                  <ShieldCheckIcon className="h-5 w-5 text-green-600 mr-3 mt-0.5" />
+                  <div>
+                    <p className="text-sm font-medium text-green-800">Health Milestone</p>
+                    <p className="text-xs text-green-600">Week 20 - Anatomy scan due</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">Or continue with</span>
+
+            {/* Recent Activity */}
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-lg font-semibold mb-4">Recent Activity</h3>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                    <span className="text-sm text-gray-700">Blood pressure logged</span>
+                  </div>
+                  <span className="text-xs text-gray-500">2h ago</span>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    <span className="text-sm text-gray-700">Consultation completed</span>
+                  </div>
+                  <span className="text-xs text-gray-500">1d ago</span>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                    <span className="text-sm text-gray-700">Care plan updated</span>
+                  </div>
+                  <span className="text-xs text-gray-500">3d ago</span>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          <div className="mt-6 grid grid-cols-2 gap-3">
-            <Link
-              href="/login/google"
-              className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
-            >
-              Google
-            </Link>
-            <Link
-              href="/login/facebook"
-              className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
-            >
-              Facebook
-            </Link>
+        {/* Child Health Monitoring Section */}
+        <div className="mt-8">
+          <div className="bg-white p-6 rounded-xl shadow-md">
+            <h3 className="text-lg font-semibold mb-4">Child Health Monitoring</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg">
+                <h4 className="font-medium text-gray-900 mb-2">Early Diagnosis</h4>
+                <p className="text-sm text-gray-600 mb-3">AI-powered screening for common childhood conditions</p>
+                <button className="text-blue-600 text-sm font-medium hover:text-blue-800">
+                  Schedule Screening →
+                </button>
+              </div>
+              
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-lg">
+                <h4 className="font-medium text-gray-900 mb-2">Growth Tracking</h4>
+                <p className="text-sm text-gray-600 mb-3">Monitor your child's development milestones</p>
+                <button className="text-green-600 text-sm font-medium hover:text-green-800">
+                  View Progress →
+                </button>
+              </div>
+              
+              <div className="bg-gradient-to-br from-purple-50 to-violet-50 p-4 rounded-lg">
+                <h4 className="font-medium text-gray-900 mb-2">Vaccination Schedule</h4>
+                <p className="text-sm text-gray-600 mb-3">Stay up-to-date with immunizations</p>
+                <button className="text-purple-600 text-sm font-medium hover:text-purple-800">
+                  Check Schedule →
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
