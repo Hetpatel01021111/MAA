@@ -68,8 +68,8 @@ export default function SignUp() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.pexels.com/photos/207756/pexels-photo-207756.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          alt="Background"
+          src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Healthcare Background"
           fill
           className="object-cover brightness-50"
           priority
@@ -79,19 +79,19 @@ export default function SignUp() {
       {/* Left Section */}
       <div className="w-1/2 pl-12 text-white relative z-10 animate-fade-in">
         <h1 className="font-playfair text-5xl font-bold mb-5 uppercase leading-tight">
-          Discover the Future of Education
+          Discover the Future of Healthcare
         </h1>
         <p className="text-lg text-gray-200 max-w-[80%] mt-8">
-          Ready to revolutionize learning? With ShikshaMitra, you get access to smart educational solutions designed to enhance learning, save time, and provide a personalized experience.
+          Ready to revolutionize your health journey? With MAA, you get access to smart healthcare solutions designed to enhance wellness, save time, and provide a personalized experience.
         </p>
 
         <ul className="mt-8 space-y-4">
           {[
-            'Seamless enrollment for instant learning access',
-            'Exclusive resources for new learners',
-            'Engaging, interactive lessons for all age groups',
-            'Progress tracking to monitor learning growth',
-            'Dedicated support to guide students at every step',
+            'Seamless enrollment for instant healthcare access',
+            'Exclusive resources for new mothers',
+            'Engaging, interactive health monitoring for all ages',
+            'Progress tracking to monitor health improvements',
+            'Dedicated support to guide families at every step',
           ].map((point, index) => (
             <li 
               key={index}

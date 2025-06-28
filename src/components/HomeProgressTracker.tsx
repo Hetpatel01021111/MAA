@@ -12,46 +12,46 @@ const HomeProgressTracker = () => {
 
   const metrics = [
     {
-      label: 'Daily Learning Goals',
+      label: 'Daily Health Goals',
       targetValue: 85,
       color: 'from-blue-400 to-blue-600',
       icon: '🎯',
-      description: 'Average daily goal completion rate'
+      description: 'Average daily health goal completion rate'
     },
     {
-      label: 'Completed Quizzes',
+      label: 'Health Checkups',
       targetValue: 92,
       color: 'from-purple-400 to-purple-600',
-      icon: '📝',
-      description: 'Success rate in assessments'
+      icon: '🏥',
+      description: 'Success rate in health assessments'
     },
     {
-      label: 'Course Progress',
+      label: 'Care Plan Progress',
       targetValue: 78,
       color: 'from-emerald-400 to-emerald-600',
-      icon: '📚',
-      description: 'Overall course completion'
+      icon: '💊',
+      description: 'Overall care plan completion'
     },
     {
-      label: 'Skill Mastery',
+      label: 'Health Monitoring',
       targetValue: 88,
       color: 'from-amber-400 to-amber-600',
       icon: '⭐',
-      description: 'Skills mastered by students'
+      description: 'Health metrics tracked by mothers'
     },
     {
-      label: 'Monthly Attendance',
+      label: 'Monthly Consultations',
       targetValue: 95,
       color: 'from-rose-400 to-rose-600',
       icon: '📅',
-      description: 'Average monthly attendance'
+      description: 'Average monthly consultation attendance'
     },
     {
-      label: 'Current Streak',
+      label: 'Wellness Streak',
       targetValue: 82,
       color: 'from-indigo-400 to-indigo-600',
       icon: '🔥',
-      description: 'Average learning streak'
+      description: 'Average wellness tracking streak'
     }
   ];
 
@@ -95,10 +95,10 @@ const HomeProgressTracker = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold text-white mb-4">
-            Track Your Learning Journey
+            Track Your Health Journey
           </h2>
           <p className="text-xl text-gray-300">
-            Real-time insights into your educational progress
+            Real-time insights into your maternal healthcare progress
           </p>
         </motion.div>
 

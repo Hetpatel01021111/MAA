@@ -12,46 +12,46 @@ interface TrackingMetric {
 const ProgressTracker = () => {
   const metrics: TrackingMetric[] = [
     {
-      label: 'Daily Learning Goals',
+      label: 'Daily Health Goals',
       value: 85,
       color: 'bg-blue-500',
       icon: '🎯',
-      description: 'Today\'s goal completion'
+      description: 'Today\'s health goal completion'
     },
     {
-      label: 'Completed Quizzes',
+      label: 'Health Checkups',
       value: 92,
       color: 'bg-purple-500',
-      icon: '📝',
-      description: '23 out of 25 quizzes'
+      icon: '🏥',
+      description: '23 out of 25 checkups completed'
     },
     {
-      label: 'Course Progress',
+      label: 'Care Plan Progress',
       value: 78,
       color: 'bg-emerald-500',
-      icon: '📚',
-      description: '15/20 modules completed'
+      icon: '💊',
+      description: '15/20 care modules completed'
     },
     {
-      label: 'Skill Mastery',
+      label: 'Health Monitoring',
       value: 88,
       color: 'bg-amber-500',
       icon: '⭐',
-      description: 'Advanced level reached'
+      description: 'Advanced health tracking level'
     },
     {
-      label: 'Monthly Attendance',
+      label: 'Monthly Consultations',
       value: 95,
       color: 'bg-rose-500',
       icon: '📅',
-      description: '19 out of 20 days'
+      description: '19 out of 20 consultations'
     },
     {
-      label: 'Current Streak',
+      label: 'Wellness Streak',
       value: 82,
       color: 'bg-indigo-500',
       icon: '🔥',
-      description: '7 days streak'
+      description: '7 days wellness streak'
     }
   ];
 
@@ -59,7 +59,7 @@ const ProgressTracker = () => {
     <div className="w-full p-6 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-xl">
       <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
         <span className="mr-2">📊</span>
-        Learning Dashboard
+        Health Dashboard
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {metrics.map((metric, index) => (

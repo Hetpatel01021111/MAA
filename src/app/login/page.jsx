@@ -36,8 +36,8 @@ export default function Login() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1614849963640-9cc74b2a826f?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Background"
+          src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Healthcare Background"
           fill
           className="object-cover brightness-50"
           priority
@@ -47,19 +47,19 @@ export default function Login() {
       {/* Left Section */}
       <div className="w-1/2 pl-12 text-white relative z-10 animate-fade-in">
         <h1 className="font-playfair text-5xl font-bold mb-5 uppercase leading-tight">
-          Welcome Back to ShikshaMitra
+          Welcome Back to MAA
         </h1>
         <p className="text-lg text-gray-200 max-w-[80%] mt-8">
-          Log in to access your account and manage your Education with ease. Experience the future with ShikshaMitra's smart solutions.
+          Log in to access your account and manage your healthcare with ease. Experience the future with MAA's smart healthcare solutions.
         </p>
 
         <ul className="mt-8 space-y-4">
           {[
-            'Real-time Education tracking',
+            'Real-time health tracking',
             'Smart analytics dashboard',
-            'Instant Education',
-            'Secure Learning processing',
-            '24/7 Student support access',
+            'Instant medical consultations',
+            'Secure health data processing',
+            '24/7 healthcare support access',
           ].map((point, index) => (
             <li 
               key={index}
@@ -90,15 +90,14 @@ export default function Login() {
               Email
             </label>
             <input
-  type="email"    
-  id="email"
-  placeholder="Enter your email"
-  value={formData.email}
-  onChange={handleChange}
-  required
-  className="w-full px-3 py-2 bg-gray-50 text-black border border-gray-300 rounded-lg focus:border-[#2d5a4e] focus:outline-none focus:ring-1 focus:ring-[#2d5a4e] transition-all"
-/>
-
+              type="email"    
+              id="email"
+              placeholder="Enter your email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full px-3 py-2 bg-gray-50 text-black border border-gray-300 rounded-lg focus:border-[#2d5a4e] focus:outline-none focus:ring-1 focus:ring-[#2d5a4e] transition-all"
+            />
           </div>
 
           <div className="mb-4">

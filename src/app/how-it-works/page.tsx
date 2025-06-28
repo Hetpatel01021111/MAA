@@ -17,7 +17,9 @@ import {
   ClockIcon,
   BookOpenIcon,
   VideoCameraIcon,
-  IdentificationIcon
+  IdentificationIcon,
+  HeartIcon,
+  DevicePhoneMobileIcon
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -52,47 +54,47 @@ export default function HowItWorks() {
 
   const collaborationSteps = [
     {
-      title: "Government Partnership Framework",
-      description: "Formalized through MoUs with state education boards for curriculum alignment and certification",
+      title: "Government Healthcare Partnership",
+      description: "Formalized through MoUs with state health departments for healthcare alignment and certification",
       icon: ShieldCheckIcon,
-      image: "/images/collaborations/map.jpg",
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=3871&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       details: [
-        "Signed agreements with 12 state education boards",
-        "Curriculum mapping with NCERT standards",
-        "Teacher certification programs"
+        "Signed agreements with 12 state health departments",
+        "Healthcare standards mapping with AIIMS protocols",
+        "Medical professional certification programs"
       ]
     },
     {
-      title: "AI Integration",
-      description: "Enhancing the national platform with personalized learning pathways",
+      title: "AI Healthcare Integration",
+      description: "Enhancing the national healthcare platform with personalized care pathways",
       icon: ChartBarIcon,
-      image: "/images/collaborations/ai.jpg",
+      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       details: [
-        "API integration",
-        "AI-powered content recommendations",
-        "Real-time progress tracking"
+        "API integration with healthcare systems",
+        "AI-powered health recommendations",
+        "Real-time maternal health tracking"
       ]
     },
     {
-      title: "Teacher Empowerment Program",
-      description: "Training government teachers as digital learning facilitators",
+      title: "Healthcare Professional Empowerment",
+      description: "Training government healthcare workers as digital health facilitators",
       icon: AcademicCapIcon,
-      image: "/images/collaborations/teacher.jpg",
+      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       details: [
-        "500+ master trainers certified",
-        "Monthly upskilling workshops",
-        "Digital pedagogy certification"
+        "500+ master healthcare trainers certified",
+        "Monthly medical upskilling workshops",
+        "Digital healthcare certification"
       ]
     },
     {
-      title: "Rural Implementation Network",
-      description: "Leveraging Anganwadi centers and rural schools as hubs",
+      title: "Rural Healthcare Network",
+      description: "Leveraging Anganwadi centers and rural hospitals as healthcare hubs",
       icon: GlobeAltIcon,
-      image: "/images/collaborations/rural.jpg",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=3888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       details: [
         "10,000+ Anganwadi centers onboarded",
-        "Low-bandwidth optimized content",
-        "Community education volunteers"
+        "Low-bandwidth optimized healthcare content",
+        "Community health volunteers"
       ]
     }
   ];
@@ -108,18 +110,15 @@ export default function HowItWorks() {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <motion.div 
-                className="h-14 w-[200px]"
+                className="h-14 w-[200px] flex items-center"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <object
-                  data="/maa-logo.svg"
-                  type="image/svg+xml"
-                  className="h-full w-full"
-                  aria-label="ShikshaMitra Logo"
-                >
-                  ShikshaMitra Logo
-                </object>
+                <div className={`text-2xl font-bold transition-colors ${
+                  isScrolled ? 'text-indigo-600' : 'text-white'
+                }`}>
+                  MAA
+                </div>
               </motion.div>
             </Link>
 
@@ -164,7 +163,11 @@ export default function HowItWorks() {
               >
                 <Link
                   href="/login"
-                  className="text-indigo-600 hover:text-indigo-500 font-medium"
+                  className={`px-6 py-2 rounded-full font-medium transition-colors ${
+                    isScrolled 
+                      ? 'text-indigo-600 hover:text-indigo-500' 
+                      : 'text-white hover:text-indigo-200'
+                  }`}
                 >
                   Login
                 </Link>
@@ -175,7 +178,9 @@ export default function HowItWorks() {
               >
                 <Link
                 href="/signup"
-                className="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                className={`inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full shadow-sm text-base font-medium text-white ${
+                  isScrolled ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-white/20 hover:bg-white/30'
+                } transition-colors`}
               >
                 Sign Up  
               </Link>
@@ -184,7 +189,9 @@ export default function HowItWorks() {
 
             {/* Mobile Menu Button */}
             <motion.button
-              className="md:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
+              className={`md:hidden p-2 rounded-lg transition-colors ${
+                isScrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'
+              }`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -204,7 +211,9 @@ export default function HowItWorks() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="md:hidden overflow-hidden bg-white/10 backdrop-blur-md rounded-lg mt-2 mb-2"
+                className={`md:hidden overflow-hidden rounded-lg mt-2 mb-2 ${
+                  isScrolled ? 'bg-white shadow-lg' : 'bg-white/10 backdrop-blur-md'
+                }`}
               >
                 <div className="px-4 py-2 space-y-2">
                   {[
@@ -225,7 +234,9 @@ export default function HowItWorks() {
                         className={`block py-3 px-4 rounded-lg transition-colors ${
                           pathname === href
                             ? 'bg-indigo-600 text-white font-medium'
-                            : 'text-white hover:bg-white/10'
+                            : isScrolled 
+                              ? 'text-gray-700 hover:bg-gray-100'
+                              : 'text-white hover:bg-white/10'
                         }`}
                         onClick={() => setIsMenuOpen(false)}
                       >
@@ -240,7 +251,11 @@ export default function HowItWorks() {
                     >
                       <Link
                         href="/login"
-                        className="block w-full py-3 px-4 text-white bg-white/10 hover:bg-white/20 rounded-lg text-center font-medium"
+                        className={`block w-full py-3 px-4 rounded-lg text-center font-medium transition-colors ${
+                          isScrolled
+                            ? 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                            : 'bg-white/10 text-white hover:bg-white/20'
+                        }`}
                         onClick={() => setIsMenuOpen(false)}
                       >
                         Login
@@ -279,8 +294,8 @@ export default function HowItWorks() {
           transition={{ delay: 0.5, duration: 1 }}
         >
           <Image
-            src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=3876&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Students learning"
+            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=3876&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Healthcare professionals"
             fill
             className="object-cover"
           />
@@ -303,7 +318,7 @@ export default function HowItWorks() {
               animate={{ opacity: isLoading ? 0 : 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
-              How We Work With <span className="text-yellow-300">The Government</span>
+              How We Work With <span className="text-yellow-300">Healthcare</span>
             </motion.h1>
             <motion.p
               className="text-xl md:text-2xl text-indigo-100 max-w-3xl mx-auto leading-relaxed"
@@ -311,7 +326,7 @@ export default function HowItWorks() {
               animate={{ opacity: isLoading ? 0 : 1 }}
               transition={{ delay: 0.7, duration: 0.8 }}
             >
-              Our nationwide partnership framework transforming education through technology
+              Our nationwide partnership framework transforming maternal healthcare through technology
             </motion.p>
             
             <motion.div
@@ -346,10 +361,10 @@ export default function HowItWorks() {
             viewport={{ once: true, margin: "-100px" }}
           >
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              Our <span className="text-indigo-600">Government Collaboration</span> Framework
+              Our <span className="text-indigo-600">Healthcare Collaboration</span> Framework
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A structured partnership model aligned with National Education Policy 2023
+              A structured partnership model aligned with National Health Mission 2025
             </p>
           </motion.div>
 
@@ -446,7 +461,7 @@ export default function HowItWorks() {
               Our <span className="text-indigo-600">Implementation Model</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              How we're scaling across India with government support
+              How we're scaling across India with healthcare support
             </p>
           </motion.div>
 
@@ -459,8 +474,8 @@ export default function HowItWorks() {
               viewport={{ once: true }}
             >
               <Image
-                src="/images/collaborations/map1.jpg"
-                alt="India implementation map"
+                src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="India healthcare implementation map"
                 fill
                 className="object-cover"
               />
@@ -473,7 +488,7 @@ export default function HowItWorks() {
                 transition={{ delay: 0.3, duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-2xl font-bold mb-2">Nationwide Rollout Strategy</h3>
+                <h3 className="text-2xl font-bold mb-2">Nationwide Healthcare Rollout</h3>
                 <p className="text-lg opacity-90">Phase-wise implementation across 28 states and 8 UTs</p>
               </motion.div>
             </motion.div>
@@ -481,22 +496,22 @@ export default function HowItWorks() {
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  title: "Policy Alignment",
-                  description: "Direct integration with NEP 2023 digital education framework",
+                  title: "Healthcare Policy Alignment",
+                  description: "Direct integration with National Health Mission 2025 framework",
                   icon: ShieldCheckIcon,
-                  stats: "100% NEP compliance"
+                  stats: "100% NHM compliance"
                 },
                 {
-                  title: "Teacher Network",
-                  description: "Government teachers trained as digital learning facilitators",
+                  title: "Medical Professional Network",
+                  description: "Government healthcare workers trained as digital health facilitators",
                   icon: UserGroupIcon,
-                  stats: "50,000+ teachers onboarded"
+                  stats: "50,000+ professionals onboarded"
                 },
                 {
-                  title: "Infrastructure Synergy",
-                  description: "Leveraging existing government school infrastructure",
-                  icon: AcademicCapIcon,
-                  stats: "75,000+ schools covered"
+                  title: "Healthcare Infrastructure Synergy",
+                  description: "Leveraging existing government hospital infrastructure",
+                  icon: HeartIcon,
+                  stats: "75,000+ healthcare centers covered"
                 }
               ].map((item, index) => (
                 <motion.div
@@ -537,10 +552,10 @@ export default function HowItWorks() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold mb-8">
-              Ready to <span className="text-yellow-300">Transform</span> Education Together?
+              Ready to <span className="text-yellow-300">Transform</span> Healthcare Together?
             </h2>
             <p className="text-xl mb-12 max-w-2xl mx-auto">
-              Join thousands of educators and students using ShikshaMitra
+              Join thousands of healthcare professionals and mothers using MAA
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <motion.div
@@ -555,7 +570,7 @@ export default function HowItWorks() {
                   href="/login"
                   className="inline-flex items-center px-8 py-3 bg-white text-indigo-600 rounded-full font-medium hover:bg-indigo-50 transition-all duration-300 shadow-lg"
                 >
-                  ShikshaMitra Login
+                  MAA Login
                 </Link>
               </motion.div>
               <motion.div
@@ -588,13 +603,9 @@ export default function HowItWorks() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
-                  <Image
-                    src="/maa-logo.svg"
-                    alt="ShikshaMitra"
-                    width={180}
-                    height={50}
-                    className="brightness-0 invert"
-                  />
+                  <div className="text-2xl font-bold text-white">
+                    MAA
+                  </div>
                 </motion.div>
               </Link>
               <motion.p 
@@ -604,7 +615,7 @@ export default function HowItWorks() {
                 transition={{ delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                Empowering India's future through accessible education for all.
+                Empowering India's mothers through accessible healthcare for all.
               </motion.p>
             </div>
             <motion.div 
@@ -633,7 +644,7 @@ export default function HowItWorks() {
                 <h3 className="text-lg font-semibold mb-4">Resources</h3>
                 <ul className="space-y-2">
                   <li><Link href="/help" className="text-gray-400 hover:text-white transition-colors">Help Center</Link></li>
-                  <li><Link href="/guides" className="text-gray-400 hover:text-white transition-colors">Guides</Link></li>
+                  <li><Link href="/guides" className="text-gray-400 hover:text-white transition-colors">Health Guides</Link></li>
                   <li><Link href="/webinars" className="text-gray-400 hover:text-white transition-colors">Webinars</Link></li>
                 </ul>
               </motion.div>
@@ -670,7 +681,7 @@ export default function HowItWorks() {
             transition={{ delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <p>© 2025 ShikshaMitra. All rights reserved.</p>
+            <p>© 2025 MAA. All rights reserved.</p>
           </motion.div>
         </div>
       </footer>

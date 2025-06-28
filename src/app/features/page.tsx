@@ -17,7 +17,9 @@ import {
   XMarkIcon, 
   Bars3Icon,
   ArrowRightIcon,
-  ChevronDownIcon
+  ChevronDownIcon,
+  HeartIcon,
+  DevicePhoneMobileIcon
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
@@ -50,7 +52,7 @@ export default function FeaturesPage() {
     const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
     return (
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br"> {/*from-indigo-600 via-violet-600 to-purple-700 */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br">
         <motion.div 
           className="absolute inset-0"
           style={{ y }}
@@ -59,8 +61,8 @@ export default function FeaturesPage() {
           transition={{ delay: 0.5, duration: 1 }}
         >
           <Image
-            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Students learning"
+            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Maternal healthcare"
             fill
             className="object-cover"
             priority
@@ -84,7 +86,7 @@ export default function FeaturesPage() {
               animate={{ opacity: isLoading ? 0 : 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
-              ShikshaMitra <span className="text-yellow-300">Features</span>
+              MAA <span className="text-yellow-300">Features</span>
             </motion.h1>
             <motion.p
               className="text-xl md:text-2xl text-indigo-100 max-w-3xl mx-auto leading-relaxed"
@@ -92,7 +94,7 @@ export default function FeaturesPage() {
               animate={{ opacity: isLoading ? 0 : 1 }}
               transition={{ delay: 0.7, duration: 0.8 }}
             >
-              Discover powerful tools transforming education for students across India
+              Discover powerful tools transforming maternal healthcare for mothers across India
             </motion.p>
             
             <motion.div
@@ -141,69 +143,69 @@ export default function FeaturesPage() {
 
   const features = [
     {
-      title: "AI-Driven Performance Monitoring",
-      description: "Track and enhance student progress with intelligent AI insights for personalized learning growth.",
+      title: "AI-Driven Health Monitoring",
+      description: "Track and enhance maternal health with intelligent AI insights for personalized pregnancy care.",
       icon: ChartBarIcon,
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      extendedDesc: "Our AI system analyzes learning patterns, identifies strengths and weaknesses, and provides personalized recommendations to optimize each student's learning journey."
+      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      extendedDesc: "Our AI system analyzes health patterns, identifies risks, and provides personalized recommendations to optimize each mother's health journey."
     },
     {
-      title: "Parent Monitoring Dashboard",
-      description: "Complete child safety with real-time monitoring and activity alerts for parents.",
+      title: "Family Health Monitoring",
+      description: "Complete family safety with real-time health monitoring and medical alerts for mothers and babies.",
       icon: ShieldCheckIcon,
-      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      extendedDesc: "Parents receive detailed reports on their child's progress, time spent learning, and areas needing attention, all through an intuitive dashboard interface."
+      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      extendedDesc: "Families receive detailed reports on maternal health progress, baby development, and areas needing attention, all through an intuitive dashboard interface."
     },
     {
-      title: "Accessible & Free Education",
-      description: "Quality learning at no cost, supported by government initiatives for every child's future.",
-      icon: AcademicCapIcon,
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      extendedDesc: "We partner with educational institutions and government bodies to provide premium educational content completely free of charge to students across India."
+      title: "Accessible & Affordable Healthcare",
+      description: "Quality maternal care at affordable prices, supported by government healthcare initiatives.",
+      icon: HeartIcon,
+      image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      extendedDesc: "We partner with healthcare institutions and government bodies to provide premium maternal care completely accessible to mothers across India."
     },
     {
-      title: "Nationwide Learning Network",
-      description: "Empowering students across India with quality education and seamless learning resources.",
+      title: "Nationwide Healthcare Network",
+      description: "Empowering mothers across India with quality healthcare and seamless medical resources.",
       icon: GlobeAltIcon,
-      image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=3871&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      extendedDesc: "Our platform connects students from rural and urban areas alike, creating a unified educational ecosystem with localized content in multiple regional languages."
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=3871&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      extendedDesc: "Our platform connects mothers from rural and urban areas alike, creating a unified healthcare ecosystem with localized care in multiple regional languages."
     },
     {
-      title: "24/7 Academic Support",
-      description: "Round-the-clock student support to assist with any queries or concerns.",
+      title: "24/7 Medical Support",
+      description: "Round-the-clock medical support to assist mothers with any health queries or concerns.",
       icon: ClockIcon,
-      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      extendedDesc: "Students can access live tutors, discussion forums, and AI-powered assistance at any time of day, ensuring help is always available when needed."
+      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      extendedDesc: "Mothers can access live medical consultations, discussion forums, and AI-powered health assistance at any time of day, ensuring help is always available when needed."
     },
     {
-      title: "Regional Support System",
-      description: "Providing full tutoring and nutritional support, tailored to your region.",
+      title: "Regional Healthcare Support",
+      description: "Providing comprehensive medical care and nutritional support, tailored to your region.",
       icon: UserGroupIcon,
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=3871&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      extendedDesc: "Our regional centers provide localized support including native language tutors, culturally relevant learning materials, and nutritional guidance specific to each area."
+      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=3871&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      extendedDesc: "Our regional centers provide localized support including native language consultations, culturally relevant care plans, and nutritional guidance specific to each area."
     }
   ];
 
   const testimonials = [
     {
-      name: "Rajesh Kumar",
-      role: "Father of 9-Year-Old Twins",
-      quote: "ShikshaMitra has greatly enhanced my children's learning with personalized support and real-time progress tracking.",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      rating: 5
-    },
-    {
       name: "Priya Sharma",
-      role: "10th Grade Student",
-      quote: "The support from ShikshaMitra has been amazing. They've made my board exam journey smoother and more manageable.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=3888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      role: "New Mother",
+      quote: "MAA has greatly enhanced my pregnancy journey with personalized care and real-time health monitoring.",
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       rating: 5
     },
     {
-      name: "Amit Patel",
-      role: "Father of 6-Year-Old",
-      quote: "I'm thankful for ShikshaMitra's nutritional support for my son. It has made a significant difference in his development.",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      name: "Anita Patel",
+      role: "Expecting Mother",
+      quote: "The support from MAA has been amazing. They've made my pregnancy journey smoother and more manageable.",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=3888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      rating: 5
+    },
+    {
+      name: "Sunita Gupta",
+      role: "Mother of Two",
+      quote: "I'm thankful for MAA's comprehensive healthcare support. It has made a significant difference in my family's health.",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=3888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       rating: 4
     }
   ];
@@ -219,18 +221,15 @@ export default function FeaturesPage() {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <motion.div 
-                className="h-14 w-[200px]"
+                className="h-14 w-[200px] flex items-center"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <object
-                  data="/maa-logo.svg"
-                  type="image/svg+xml"
-                  className="h-full w-full"
-                  aria-label="ShikshaMitra Logo"
-                >
-                  ShikshaMitra Logo
-                </object>
+                <div className={`text-2xl font-bold transition-colors ${
+                  isScrolled ? 'text-indigo-600' : 'text-white'
+                }`}>
+                  MAA
+                </div>
               </motion.div>
             </Link>
 
@@ -275,7 +274,11 @@ export default function FeaturesPage() {
               >
                 <Link
                   href="/login"
-                  className="text-indigo-600 hover:text-indigo-500 font-medium"
+                  className={`px-6 py-2 rounded-full font-medium transition-colors ${
+                    isScrolled 
+                      ? 'text-indigo-600 hover:text-indigo-500' 
+                      : 'text-white hover:text-indigo-200'
+                  }`}
                 >
                   Login
                 </Link>
@@ -286,7 +289,9 @@ export default function FeaturesPage() {
               >
                 <Link
                 href="/signup"
-                className="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                className={`inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full shadow-sm text-base font-medium text-white ${
+                  isScrolled ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-white/20 hover:bg-white/30'
+                } transition-colors`}
               >
                 Sign Up  
               </Link>
@@ -295,7 +300,9 @@ export default function FeaturesPage() {
 
             {/* Mobile Menu Button */}
             <motion.button
-              className="md:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
+              className={`md:hidden p-2 rounded-lg transition-colors ${
+                isScrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'
+              }`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -315,7 +322,9 @@ export default function FeaturesPage() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="md:hidden overflow-hidden bg-white/10 backdrop-blur-md rounded-lg mt-2 mb-2"
+                className={`md:hidden overflow-hidden rounded-lg mt-2 mb-2 ${
+                  isScrolled ? 'bg-white shadow-lg' : 'bg-white/10 backdrop-blur-md'
+                }`}
               >
                 <div className="px-4 py-2 space-y-2">
                   {[
@@ -336,7 +345,9 @@ export default function FeaturesPage() {
                         className={`block py-3 px-4 rounded-lg transition-colors ${
                           pathname === href
                             ? 'bg-indigo-600 text-white font-medium'
-                            : 'text-white hover:bg-white/10'
+                            : isScrolled 
+                              ? 'text-gray-700 hover:bg-gray-100'
+                              : 'text-white hover:bg-white/10'
                         }`}
                         onClick={() => setIsMenuOpen(false)}
                       >
@@ -351,7 +362,11 @@ export default function FeaturesPage() {
                     >
                       <Link
                         href="/login"
-                        className="block w-full py-3 px-4 text-white bg-white/10 hover:bg-white/20 rounded-lg text-center font-medium"
+                        className={`block w-full py-3 px-4 rounded-lg text-center font-medium transition-colors ${
+                          isScrolled
+                            ? 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                            : 'bg-white/10 text-white hover:bg-white/20'
+                        }`}
                         onClick={() => setIsMenuOpen(false)}
                       >
                         Login
@@ -396,7 +411,7 @@ export default function FeaturesPage() {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              Comprehensive <span className="text-indigo-600">Learning Features</span>
+              Comprehensive <span className="text-indigo-600">Healthcare Features</span>
             </motion.h2>
             <motion.p
               className="text-xl text-gray-600 max-w-3xl mx-auto"
@@ -404,7 +419,7 @@ export default function FeaturesPage() {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              Explore the powerful tools and resources designed to transform education for students across India
+              Explore the powerful tools and resources designed to transform maternal healthcare for mothers across India
             </motion.p>
           </motion.div>
 
@@ -632,10 +647,10 @@ export default function FeaturesPage() {
             viewport={{ once: true, margin: "-100px" }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-              What <span className="text-indigo-600">Parents & Students</span> Say
+              What <span className="text-indigo-600">Mothers</span> Say
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Hear from our community about their experiences with ShikshaMitra
+              Hear from our community about their experiences with MAA
             </p>
           </motion.div>
 
@@ -729,7 +744,7 @@ export default function FeaturesPage() {
             viewport={{ once: true, margin: "-100px" }}
           >
             {[
-              { value: "50K+", label: "Students Empowered" },
+              { value: "500K+", label: "Mothers Served" },
               { value: "100+", label: "Cities Covered" },
               { value: "24/7", label: "Support Available" },
               { value: "95%", label: "Satisfaction Rate" }
@@ -785,10 +800,10 @@ export default function FeaturesPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-8">
-              Ready to <span className="text-yellow-300">Transform</span> Education?
+              Ready to <span className="text-yellow-300">Transform</span> Your Healthcare?
             </h2>
             <p className="text-xl mb-12 max-w-2xl mx-auto">
-              Join thousands of students and parents using ShikshaMitra for better learning outcomes
+              Join thousands of mothers using MAA for better healthcare outcomes
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <motion.div
@@ -836,13 +851,9 @@ export default function FeaturesPage() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
-                  <Image
-                    src="/maa-logo.svg"
-                    alt="ShikshaMitra"
-                    width={180}
-                    height={50}
-                    className="brightness-0 invert"
-                  />
+                  <div className="text-2xl font-bold text-white">
+                    MAA
+                  </div>
                 </motion.div>
               </Link>
               <motion.p 
@@ -852,7 +863,7 @@ export default function FeaturesPage() {
                 transition={{ delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                Empowering India's future through accessible education for all.
+                Empowering India's mothers through accessible healthcare for all.
               </motion.p>
             </div>
             <motion.div 
@@ -881,7 +892,7 @@ export default function FeaturesPage() {
                 <h3 className="text-lg font-semibold mb-4">Resources</h3>
                 <ul className="space-y-2">
                   <li><Link href="/help" className="text-gray-400 hover:text-white transition-colors">Help Center</Link></li>
-                  <li><Link href="/guides" className="text-gray-400 hover:text-white transition-colors">Guides</Link></li>
+                  <li><Link href="/guides" className="text-gray-400 hover:text-white transition-colors">Health Guides</Link></li>
                   <li><Link href="/webinars" className="text-gray-400 hover:text-white transition-colors">Webinars</Link></li>
                 </ul>
               </motion.div>
@@ -918,7 +929,7 @@ export default function FeaturesPage() {
             transition={{ delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <p>© 2025 ShikshaMitra. All rights reserved.</p>
+            <p>© 2025 MAA. All rights reserved.</p>
           </motion.div>
         </div>
       </footer>

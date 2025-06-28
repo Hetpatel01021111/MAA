@@ -80,8 +80,8 @@ export default function ContactPage() {
       icon: EnvelopeIcon,
       title: "Email Us",
       description: "Our team will get back to you within 24 hours",
-      details: "contact@shikshamitra.org",
-      link: "mailto:contact@shikshamitra.org"
+      details: "contact@maa.org",
+      link: "mailto:contact@maa.org"
     },
     {
       icon: PhoneIcon,
@@ -94,8 +94,8 @@ export default function ContactPage() {
       icon: MapPinIcon,
       title: "Visit Us",
       description: "Come say hello at our headquarters",
-      details: "EduTech Park, Sector 62, Noida, Uttar Pradesh 201309",
-      link: "https://maps.google.com/?q=EduTech+Park,+Sector+62,+Noida"
+      details: "Healthcare Park, Sector 62, Noida, Uttar Pradesh 201309",
+      link: "https://maps.google.com/?q=Healthcare+Park,+Sector+62,+Noida"
     },
     {
       icon: ClockIcon,
@@ -126,12 +126,9 @@ export default function ContactPage() {
                 repeatType: "reverse"
               }}
             >
-              <Image
-                src="/maa-logo.svg"
-                alt="ShikshaMitra Logo"
-                width={200}
-                height={60}
-              />
+              <div className="text-4xl font-bold text-indigo-600">
+                MAA
+              </div>
             </motion.div>
             <motion.div
               className="mt-8 h-1 w-48 bg-gray-200 rounded-full overflow-hidden"
@@ -160,17 +157,15 @@ export default function ContactPage() {
               {/* Logo */}
               <Link href="/" className="flex items-center">
                 <motion.div 
-                  className="h-14 w-[200px]"
+                  className="h-14 w-[200px] flex items-center"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
-                  <Image
-                    src="/maa-logo.svg"
-                    alt="ShikshaMitra Logo"
-                    width={200}
-                    height={56}
-                    className="h-full w-full object-contain"
-                  />
+                  <div className={`text-2xl font-bold transition-colors ${
+                    isScrolled ? 'text-indigo-600' : 'text-white'
+                  }`}>
+                    MAA
+                  </div>
                 </motion.div>
               </Link>
 
@@ -347,7 +342,7 @@ export default function ContactPage() {
           >
             <Image
               src="https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              alt="Contact us - people communicating"
+              alt="Healthcare support - people communicating"
               fill
               className="object-cover"
             />
@@ -378,7 +373,7 @@ export default function ContactPage() {
                 animate={{ opacity: isLoading ? 0 : 1 }}
                 transition={{ delay: 0.7, duration: 0.8 }}
               >
-                We'd love to hear from you! Reach out for support, or just to say hello.
+                We'd love to hear from you! Reach out for healthcare support, or just to say hello.
               </motion.p>
             </motion.div>
           </div>
@@ -398,7 +393,7 @@ export default function ContactPage() {
                 How to <span className="text-indigo-600">Reach Us</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Multiple ways to get in touch with our team
+                Multiple ways to get in touch with our healthcare team
               </p>
             </motion.div>
 
@@ -461,7 +456,7 @@ export default function ContactPage() {
                   Send Us a <span className="text-indigo-600">Message</span>
                 </h2>
                 <p className="text-xl text-gray-600 mb-6">
-                  Have questions about our platform? Want to partner with us? Fill out the form and our team will get back to you shortly.
+                  Have questions about our healthcare platform? Want to partner with us? Fill out the form and our team will get back to you shortly.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-start">
@@ -485,7 +480,7 @@ export default function ContactPage() {
                       </div>
                     </div>
                     <p className="ml-3 text-gray-600">
-                      All inquiries are handled by our <strong>dedicated team</strong>
+                      All inquiries are handled by our <strong>dedicated healthcare team</strong>
                     </p>
                   </div>
                 </div>
@@ -614,27 +609,27 @@ export default function ContactPage() {
                 Frequently <span className="text-indigo-600">Asked Questions</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Quick answers to common questions about ShikshaMitra
+                Quick answers to common questions about MAA
               </p>
             </motion.div>
 
             <div className="max-w-3xl mx-auto space-y-6">
               {[
                 {
-                  question: "How can my school join ShikshaMitra?",
-                  answer: "Schools can apply through our partnership portal. We work with both government and private schools across India. The process includes a needs assessment, infrastructure review, and teacher training program."
+                  question: "How can my hospital join MAA?",
+                  answer: "Hospitals can apply through our partnership portal. We work with both government and private healthcare facilities across India. The process includes a needs assessment, infrastructure review, and staff training program."
                 },
                 {
                   question: "What technology requirements are needed to use your platform?",
-                  answer: "Our platform works on any device with internet access, including low-end smartphones. For schools, we recommend at least one device per 5 students. We've optimized our solution to work even in low-bandwidth conditions."
+                  answer: "Our platform works on any device with internet access, including low-end smartphones. For hospitals, we recommend at least one device per 5 staff members. We've optimized our solution to work even in low-bandwidth conditions."
                 },
                 {
                   question: "Do you offer support in regional languages?",
                   answer: "Yes! Currently we support 8 Indian languages including Hindi, Bengali, Telugu, Marathi, Tamil, Gujarati, Kannada, and Malayalam. We're continuously adding more language support based on demand."
                 },
                 {
-                  question: "How does ShikshaMitra ensure student data privacy?",
-                  answer: "We comply with India's Digital Personal Data Protection Act 2023. All student data is encrypted, and we never share personal information with third parties without explicit consent. Our platform has received ISO 27001 certification for information security."
+                  question: "How does MAA ensure patient data privacy?",
+                  answer: "We comply with India's Digital Personal Data Protection Act 2023. All patient data is encrypted, and we never share personal information with third parties without explicit consent. Our platform has received ISO 27001 certification for information security."
                 }
               ].map((faq, index) => (
                 <motion.div
@@ -704,7 +699,7 @@ export default function ContactPage() {
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                title="ShikshaMitra Headquarters Location"
+                title="MAA Headquarters Location"
               ></iframe>
             </motion.div>
           </div>
@@ -720,10 +715,10 @@ export default function ContactPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl font-bold mb-8">
-                Ready to <span className="text-yellow-300">Transform</span> Education With Us?
+                Ready to <span className="text-yellow-300">Transform</span> Healthcare With Us?
               </h2>
               <p className="text-xl mb-12 max-w-2xl mx-auto">
-                Whether you're an educator, policymaker, or technology partner, join our mission
+                Whether you're a healthcare provider, policymaker, or technology partner, join our mission
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <motion.div
