@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <!-- Boxes -->
+        <rect fill="#D4A676" x="300" y="200" width="80" height="80"/>
+        <rect fill="#C4916A" x="320" y="180" width="80" height="80"/>
+        <rect fill="#B47E5F" x="340" y="160" width="80" height="80"/>
+        
+        <!-- Hand Truck -->
+        <path d="M450,400 L500,400 L500,200 L450,200 L450,400 Z" fill="#666666"/>
+        <rect fill="#444444" x="440" y="380" width="70" height="20"/>
+        <circle fill="#333333" cx="460" cy="410" r="20"/>
+        <circle fill="#333333" cx="520" cy="410" r="20"/>
+        
+        <!-- Person (simplified) -->
+        <circle fill="#00C853" cx="400" cy="250" r="30"/> <!-- Head -->
+        <rect fill="#00C853" x="385" y="280" width="30" height="80"/> <!-- Body -->
+        <rect fill="#00C853" x="370" y="320" width="20" height="60" transform="rotate(30 380 350)"/> <!-- Left arm -->
+        <rect fill="#00C853" x="410" y="320" width="20" height="60" transform="rotate(-30 420 350)"/> <!-- Right arm -->
+    </g>
+</svg> 

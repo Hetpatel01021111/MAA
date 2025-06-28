@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="600px" viewBox="0 0 1200 600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="currentColor" stroke-width="1" fill="none">
+        <!-- Simplified World Map Outline -->
+        <path d="M200,200 C250,180 300,190 350,200 C400,210 450,200 500,190 C550,180 600,185 650,200 C700,215 750,210 800,200 C850,190 900,195 950,210 C1000,225 1050,220 1100,200" />
+        <path d="M150,250 C200,240 250,245 300,260 C350,275 400,270 450,255 C500,240 550,245 600,260 C650,275 700,270 750,255 C800,240 850,245 900,260 C950,275 1000,270 1050,255" />
+        <path d="M250,300 C300,290 350,295 400,310 C450,325 500,320 550,305 C600,290 650,295 700,310 C750,325 800,320 850,305 C900,290 950,295 1000,310" />
+        <!-- Connection Lines -->
+        <path d="M300,200 L450,300" stroke-dasharray="4,4" />
+        <path d="M600,250 L750,350" stroke-dasharray="4,4" />
+        <path d="M900,200 L750,300" stroke-dasharray="4,4" />
+        <!-- Dots representing cities -->
+        <circle cx="300" cy="200" r="4" fill="currentColor" />
+        <circle cx="600" cy="250" r="4" fill="currentColor" />
+        <circle cx="900" cy="200" r="4" fill="currentColor" />
+        <circle cx="450" cy="300" r="4" fill="currentColor" />
+        <circle cx="750" cy="350" r="4" fill="currentColor" />
+        <circle cx="750" cy="300" r="4" fill="currentColor" />
+    </g>
+</svg> 

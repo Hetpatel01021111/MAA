@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        @keyframes drive {
+            from { transform: translateX(-50px); }
+            to { transform: translateX(50px); }
+        }
+        .scooter {
+            animation: drive 2s ease-in-out infinite alternate;
+        }
+    </style>
+    <g class="scooter">
+        <!-- Scooter Body -->
+        <path d="M150,200 C180,200 200,180 220,180 L280,180 C300,180 310,190 310,210" 
+              fill="#00bfa5" stroke="#333" stroke-width="4"/>
+        <!-- Wheels -->
+        <circle cx="130" cy="220" r="30" fill="#333"/>
+        <circle cx="310" cy="220" r="30" fill="#333"/>
+        <!-- Driver -->
+        <circle cx="200" cy="140" r="20" fill="#00bfa5"/>
+        <rect x="190" y="160" width="20" height="40" fill="#00bfa5"/>
+        <!-- Package -->
+        <rect x="240" y="140" width="40" height="40" fill="#d4a676"/>
+    </g>
+</svg> 
