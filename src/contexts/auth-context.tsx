@@ -47,9 +47,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setLoading(true)
       const { error } = await supabase.auth.signInWithPassword({ email, password })
-      if (error) throw error
+      if (error) {
+        console.error('Sign in error:', error)
+        throw error
+      }
       router.push('/')
     } catch (error) {
+      console.error('Sign in failed:', error)
       throw error
     } finally {
       setLoading(false)
@@ -59,10 +63,35 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const signUp = async (email: string, password: string) => {
     try {
       setLoading(true)
-      const { error } = await supabase.auth.signUp({ email, password })
-      if (error) throw error
-      router.push('/')
+      
+      // Validate inputs
+      if (!email || !password) {
+        throw new Error('Email and password are required')
+      }
+      
+      if (password.length < 6) {
+        throw new Error('Password must be at least 6 characters long')
+      }
+
+      const { data, error } = await supabase.auth.signUp({ 
+        email, 
+        password
+      })
+      
+      if (error) {
+        console.error('Sign up error:', error)
+        throw error
+      }
+
+      // Check if user needs to confirm email
+      if (data.user && !data.session) {
+        // User created but needs email confirmation
+        console.log('Please check your email for confirmation')
+      } else if (data.session) {
+        router.push('/')
+      }
     } catch (error) {
+      console.error('Sign up failed:', error)
       throw error
     } finally {
       setLoading(false)
@@ -73,9 +102,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setLoading(true)
       const { error } = await supabase.auth.signOut()
-      if (error) throw error
+      if (error) {
+        console.error('Sign out error:', error)
+        throw error
+      }
       router.push('/login')
     } catch (error) {
+      console.error('Sign out failed:', error)
       throw error
     } finally {
       setLoading(false)
@@ -86,13 +119,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setLoading(true)
       const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: `${window.location.origin}/auth/callback`
-        }
+        provider: 'google'
       })
-      if (error) throw error
+      if (error) {
+        console.error('Google sign in error:', error)
+        throw error
+      }
     } catch (error) {
+      console.error('Google sign in failed:', error)
       throw error
     } finally {
       setLoading(false)
@@ -103,13 +137,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setLoading(true)
       const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'facebook',
-        options: {
-          redirectTo: `${window.location.origin}/auth/callback`
-        }
+        provider: 'facebook'
       })
-      if (error) throw error
+      if (error) {
+        console.error('Facebook sign in error:', error)
+        throw error
+      }
     } catch (error) {
+      console.error('Facebook sign in failed:', error)
       throw error
     } finally {
       setLoading(false)
