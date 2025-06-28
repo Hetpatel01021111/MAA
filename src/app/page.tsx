@@ -4,11 +4,7 @@ import { useState, useEffect } from "react";
 import ImageWithFallback from "@/components/ImageWithFallback";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import AnimatedFeatures from "@/components/AnimatedFeatures";
-import PricingCalculator from "@/components/PricingCalculator";
-import PartnersShowcase from "@/components/PartnersShowcase";
 import HomeProgressTracker from "@/components/HomeProgressTracker";
-
 
 import {
   TruckIcon,
@@ -23,7 +19,13 @@ import { usePathname } from 'next/navigation';
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+
+  // Ensure component is mounted before accessing pathname
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +58,7 @@ export default function Home() {
         setCurrentSlide((prev) => (prev + 1) % slides.length);
       }, 5000);
       return () => clearInterval(timer);
-    }, []);
+    }, [slides.length]);
 
     return (
       <section className="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden">
@@ -155,6 +157,16 @@ export default function Home() {
     threshold: 0.1,
   });
 
+  // Don't render navigation links until component is mounted
+  const navigationLinks = mounted ? [
+    ['Home', '/'],
+    ['Features', '/features'],
+    ['How It Works', '/how-it-works'],
+    ['About', '/about'],
+    ['Need Help?', '/track'],
+    ['Contact', '/contact'],
+  ] : [];
+
   return (
     <main className="min-h-screen custom-scrollbar">
       {/* Navigation Bar */}
@@ -176,14 +188,7 @@ export default function Home() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              {[
-                ['Home', '/'],
-                ['Features', '/features'],
-                ['How It Works', '/how-it-works'],
-                ['About', '/about'],
-                ['Need Help?', '/track'],
-                ['Contact', '/contact'],
-              ].map(([label, href]) => (
+              {navigationLinks.map(([label, href]) => (
                 <Link
                   key={label}
                   href={href}
@@ -248,14 +253,7 @@ export default function Home() {
             }`}
           >
             <div className="px-4 py-2 space-y-2">
-              {[
-                ['Home', '/'],
-                ['Features', '/features'],
-                ['How It Works', '/how-it-works'],
-                ['About', '/about'],
-                ['Need Help?', '/track'],
-                ['Contact', '/contact'],
-              ].map(([label, href]) => (
+              {navigationLinks.map(([label, href]) => (
                 <Link
                   key={label}
                   href={href}
