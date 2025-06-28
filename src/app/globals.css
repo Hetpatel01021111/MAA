@@ -41,6 +41,11 @@
   100% { transform: scale(1); }
 }
 
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
 .animate-fade-in {
   animation: fadeIn 1.2s ease-out;
 }
@@ -59,6 +64,10 @@
 
 .animate-pulse-slow {
   animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
 }
 
 .stagger-1 { animation-delay: 0.2s; }
@@ -112,6 +121,37 @@
   border-radius: 4px;
 }
 
+/* Image loading improvements */
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Prevent layout shift during image loading */
+.aspect-ratio-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+}
+
+.aspect-ratio-16-9 {
+  padding-bottom: 56.25%;
+}
+
+.aspect-ratio-4-3 {
+  padding-bottom: 75%;
+}
+
+.aspect-ratio-1-1 {
+  padding-bottom: 100%;
+}
+
 :root {
   --background: #f0f4f8; /* Light background */
   --foreground: #333333; /* Dark text */
@@ -128,4 +168,17 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Improve image rendering */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Better loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
