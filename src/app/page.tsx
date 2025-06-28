@@ -38,16 +38,16 @@ export default function Home() {
     
     const slides = [
       {
-        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=1920&auto=format&fit=crop",
-        alt: "Pregnant woman with healthcare professional"
+        image: "https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=1289&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Pregnant woman receiving healthcare"
       },
       {
-        image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=1920&auto=format&fit=crop",
-        alt: "Mother and baby healthcare"
+        image: "https://images.unsplash.com/photo-1576696058573-12b47c49559e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Mother and baby healthcare consultation"
       },
       {
-        image: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1920&auto=format&fit=crop",
-        alt: "Digital healthcare technology"
+        image: "https://plus.unsplash.com/premium_photo-1663099956579-cbb3e6f85316?q=80&w=2880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        alt: "Digital maternal healthcare technology"
       }
     ];
 
