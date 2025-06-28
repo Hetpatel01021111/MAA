@@ -38,16 +38,16 @@ export default function Home() {
     
     const slides = [
       {
-        image: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1920&auto=format&fit=crop",
-        alt: "Students learning together"
+        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=1920&auto=format&fit=crop",
+        alt: "Pregnant woman with healthcare professional"
       },
       {
-        image: "https://images.unsplash.com/photo-1522661067900-ab829854a57f?q=80&w=1920&auto=format&fit=crop",
-        alt: "Modern classroom with technology"
+        image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=1920&auto=format&fit=crop",
+        alt: "Mother and baby healthcare"
       },
       {
-        image: "https://images.unsplash.com/photo-1560785496-3c9d27877182?q=80&w=1920&auto=format&fit=crop",
-        alt: "Students using digital devices"
+        image: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1920&auto=format&fit=crop",
+        alt: "Digital healthcare technology"
       }
     ];
 
@@ -166,7 +166,9 @@ export default function Home() {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <div className="h-14 w-[200px] flex items-center">
-                <div className="text-2xl font-bold text-indigo-600">
+                <div className={`text-2xl font-bold transition-colors ${
+                  isScrolled ? 'text-indigo-600' : 'text-white'
+                }`}>
                   MAA
                 </div>
               </div>
