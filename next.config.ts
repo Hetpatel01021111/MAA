@@ -35,13 +35,6 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       }
     ],
-    domains: [
-      'images.unsplash.com',
-      'plus.unsplash.com',
-      'images.pexels.com',
-      'via.placeholder.com',
-      'picsum.photos'
-    ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     unoptimized: false,
