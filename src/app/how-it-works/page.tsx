@@ -113,7 +113,7 @@ export default function HowItWorks() {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 <object
-                  data="/logo.svg"
+                  data="/maa-logo.svg"
                   type="image/svg+xml"
                   className="h-full w-full"
                   aria-label="ShikshaMitra Logo"
@@ -589,7 +589,7 @@ export default function HowItWorks() {
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
                   <Image
-                    src="/logo.svg"
+                    src="/maa-logo.svg"
                     alt="ShikshaMitra"
                     width={180}
                     height={50}

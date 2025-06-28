@@ -127,7 +127,7 @@ export default function ContactPage() {
               }}
             >
               <Image
-                src="/logo.svg"
+                src="/maa-logo.svg"
                 alt="ShikshaMitra Logo"
                 width={200}
                 height={60}
@@ -165,7 +165,7 @@ export default function ContactPage() {
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
                   <Image
-                    src="/logo.svg"
+                    src="/maa-logo.svg"
                     alt="ShikshaMitra Logo"
                     width={200}
                     height={56}
