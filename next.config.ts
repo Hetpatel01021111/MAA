@@ -12,6 +12,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'plus.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'images.pexels.com',
         port: '',
         pathname: '/**',
@@ -31,6 +37,7 @@ const nextConfig: NextConfig = {
     ],
     domains: [
       'images.unsplash.com',
+      'plus.unsplash.com',
       'images.pexels.com',
       'via.placeholder.com',
       'picsum.photos'
