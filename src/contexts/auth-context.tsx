@@ -75,7 +75,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       const { data, error } = await supabase.auth.signUp({ 
         email, 
-        password
+        password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/confirm`
+        }
       })
       
       if (error) {
@@ -86,7 +89,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // Check if user needs to confirm email
       if (data.user && !data.session) {
         // User created but needs email confirmation
-        console.log('Please check your email for confirmation')
+        alert('Please check your email for a confirmation link before signing in.')
       } else if (data.session) {
         router.push('/')
       }
@@ -119,7 +122,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setLoading(true)
       const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google'
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/auth/confirm`
+        }
       })
       if (error) {
         console.error('Google sign in error:', error)
@@ -137,7 +143,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setLoading(true)
       const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'facebook'
+        provider: 'facebook',
+        options: {
+          redirectTo: `${window.location.origin}/auth/confirm`
+        }
       })
       if (error) {
         console.error('Facebook sign in error:', error)
