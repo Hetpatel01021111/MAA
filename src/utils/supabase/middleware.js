@@ -14,6 +14,24 @@ export async function updateSession(request) {
     return supabaseResponse
   }
 
+  // Validate URL format and check for placeholder values
+  if (supabaseUrl.includes('your-project-id') || supabaseUrl.includes('your_supabase_project_url_here')) {
+    console.error('Please replace the placeholder Supabase URL with your actual project URL from the Supabase dashboard.')
+    return supabaseResponse
+  }
+
+  if (supabaseAnonKey.includes('your-anon-key-here') || supabaseAnonKey.includes('your_supabase_anon_key_here')) {
+    console.error('Please replace the placeholder Supabase anon key with your actual anon key from the Supabase dashboard.')
+    return supabaseResponse
+  }
+
+  try {
+    new URL(supabaseUrl)
+  } catch (error) {
+    console.error(`Invalid Supabase URL format: ${supabaseUrl}. Please check your NEXT_PUBLIC_SUPABASE_URL in .env.local`)
+    return supabaseResponse
+  }
+
   const supabase = createServerClient(
     supabaseUrl,
     supabaseAnonKey,
