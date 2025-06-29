@@ -12,14 +12,28 @@ export default function Login() {
     password: '',
     rememberMe: false,
   });
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(''); // Clear previous errors
+    
     try {
       await signIn(formData.email, formData.password);
       // Redirect will be handled by the auth state change in AuthContext
     } catch (error) {
-      alert(error instanceof Error ? error.message : 'An error occurred during login');
+      // Handle specific error messages
+      let errorMessage = 'An error occurred during login';
+      
+      if (error.message === 'Invalid login credentials') {
+        errorMessage = 'Invalid email or password. Please check your credentials and try again.';
+      } else if (error.message.includes('Email not confirmed')) {
+        errorMessage = 'Please check your email and confirm your account before signing in.';
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
+      setError(errorMessage);
     }
   };
 
@@ -29,6 +43,17 @@ export default function Login() {
       ...formData,
       [e.target.id]: value,
     });
+    // Clear error when user starts typing
+    if (error) setError('');
+  };
+
+  const handleSocialLogin = async (loginFunction) => {
+    setError('');
+    try {
+      await loginFunction();
+    } catch (error) {
+      setError(error.message || 'Social login failed. Please try again.');
+    }
   };
 
   return (
@@ -85,6 +110,13 @@ export default function Login() {
             <span className="absolute left-1/2 bottom-[-10px] transform -translate-x-1/2 w-12 h-[3px] bg-[#2d5a4e] rounded"></span>
           </h3>
 
+          {/* Error Message */}
+          {error && (
+            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-600 text-sm">{error}</p>
+            </div>
+          )}
+
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
               Email
@@ -135,9 +167,10 @@ export default function Login() {
 
           <button
             type="submit"
-            className="w-full py-3 bg-[#2d5a4e] text-white font-semibold rounded-lg hover:bg-[#3b7f6a] transition-colors"
+            disabled={loading}
+            className="w-full py-3 bg-[#2d5a4e] text-white font-semibold rounded-lg hover:bg-[#3b7f6a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Login
+            {loading ? 'Signing in...' : 'Login'}
           </button>
 
           {/* Social Login Buttons */}
@@ -153,8 +186,9 @@ export default function Login() {
 
             <div className="mt-6 grid grid-cols-2 gap-3">
               <button 
-                onClick={signInWithGoogle}
-                className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all transform hover:scale-105"
+                type="button"
+                onClick={() => handleSocialLogin(signInWithGoogle)}
+                className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={loading}
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -167,8 +201,9 @@ export default function Login() {
               </button>
 
               <button
-                onClick={signInWithFacebook}
-                className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all transform hover:scale-105"
+                type="button"
+                onClick={() => handleSocialLogin(signInWithFacebook)}
+                className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={loading}
               >
                 <svg className="w-5 h-5 text-[#1877F2]" fill="currentColor" viewBox="0 0 24 24">
